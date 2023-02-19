@@ -1,1 +1,3 @@
-# refrigerator_project_flutter
+# 냉장고를부탁해 프로젝트
+
+# Flutter 프로젝트
