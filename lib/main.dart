@@ -12,13 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(
-            children: [
-                SizedBox(height: 30)
-            ]
-        ),
+        body: Column(children: [Text("Hello World!!!")]),
       ),
-
     );
   }
 }
