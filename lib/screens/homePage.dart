@@ -1,10 +1,12 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:refrigerator_project_flutter/screens/loginPage.dart';
+import 'package:refrigerator_project_flutter/screens/myPage.dart';
+import 'package:refrigerator_project_flutter/screens/myRecipe.dart';
+import 'package:refrigerator_project_flutter/screens/myRefriger.dart';
+import 'package:refrigerator_project_flutter/screens/searchRecipe.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
-
 
 /// 홈페이지
 class HomePage extends StatefulWidget {
@@ -15,35 +17,58 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController jobController = TextEditingController();
+  int _currentIndex = 0;
+
+  final List<Widget> _childrenWidget = [
+    MyFridge(), // 나의 냉장고
+    SearchRecipe(), // 레시피 검색
+    MyRecipe(), // 나의 레시피
+    MyPage() // 마이페이지
+  ];
+
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("TEST"),
-        actions: [
-          TextButton(
-            child: Text(
-              "로그아웃",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            onPressed: () {
-              // 로그아웃
-              context.read<AuthService>().signOut();
+    final authService = context.read<AuthService>();
+    final user = authService.currentUser()!;
 
-              // 로그인 페이지로 이동
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
-              );
-            },
-          ),
-        ],
-      ),
-      body: Column(
+    return Scaffold(
+      extendBody: true,
+      body: _childrenWidget[_currentIndex],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          onTap: _onTap,
+          currentIndex: _currentIndex,
+          selectedItemColor: Color.fromRGBO(221, 81, 37, 1),
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.kitchen),
+              activeIcon: Icon(Icons.kitchen, color: Color.fromRGBO(221, 81, 37, 1)),
+              label: '냉장고',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu_book),
+              activeIcon: Icon(Icons.menu_book, color: Color.fromRGBO(221, 81, 37, 1)),
+              label: '레시피 검색',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.create),
+                activeIcon: Icon(Icons.create, color: Color.fromRGBO(221, 81, 37, 1)),
+                label: '나의 레시피'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle),
+                activeIcon: Icon(Icons.account_circle, color: Color.fromRGBO(221, 81, 37, 1)),
+                label: 'MY페이지'),
+          ],
+        ),
       ),
     );
   }
