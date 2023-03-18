@@ -40,37 +40,34 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       extendBody: true,
       body: _childrenWidget[_currentIndex],
-      bottomNavigationBar: SizedBox(
-        height: 65,
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24), topRight: Radius.circular(24)),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            onTap: _onTap,
-            currentIndex: _currentIndex,
-            selectedItemColor: Color.fromRGBO(221, 81, 37, 1),
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.kitchen),
-                activeIcon: Icon(Icons.kitchen, color: Color.fromRGBO(221, 81, 37, 1)),
-                label: '냉장고',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.menu_book),
-                activeIcon: Icon(Icons.menu_book, color: Color.fromRGBO(221, 81, 37, 1)),
-                label: '레시피 검색',
-              ),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.create),
-                  activeIcon: Icon(Icons.create, color: Color.fromRGBO(221, 81, 37, 1)),
-                  label: '나의 레시피'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle),
-                  activeIcon: Icon(Icons.account_circle, color: Color.fromRGBO(221, 81, 37, 1)),
-                  label: 'MY페이지'),
-            ],
-          ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          onTap: _onTap,
+          currentIndex: _currentIndex,
+          selectedItemColor: Color.fromRGBO(221, 81, 37, 1),
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.kitchen),
+              activeIcon: Icon(Icons.kitchen, color: Color.fromRGBO(221, 81, 37, 1)),
+              label: '냉장고',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu_book),
+              activeIcon: Icon(Icons.menu_book, color: Color.fromRGBO(221, 81, 37, 1)),
+              label: '레시피 검색',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.create),
+                activeIcon: Icon(Icons.create, color: Color.fromRGBO(221, 81, 37, 1)),
+                label: '나의 레시피'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle),
+                activeIcon: Icon(Icons.account_circle, color: Color.fromRGBO(221, 81, 37, 1)),
+                label: 'MY페이지'),
+          ],
         ),
       ),
     );
