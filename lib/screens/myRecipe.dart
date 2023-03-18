@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:refrigerator_project_flutter/model/recipeItem.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
+import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 
 /// 홈페이지
 class MyRecipe extends StatefulWidget {
@@ -13,19 +15,20 @@ class MyRecipe extends StatefulWidget {
 
 class _MyRecipeState extends State<MyRecipe> {
   TextEditingController jobController = TextEditingController();
+
   // ignore: prefer_final_fields
-  List<Item> _items = [
-    Item(
+  List<RecipeItem> _items = [
+    RecipeItem(
       headerValue: '피자',
       expandedValue: '2023 01 01',
       isExpanded: false,
     ),
-    Item(
+    RecipeItem(
       headerValue: '김치찌게',
       expandedValue: '2023 01 01',
       isExpanded: false,
     ),
-    Item(
+    RecipeItem(
       headerValue: '해물파전',
       expandedValue: '2023 01 03',
       isExpanded: false,
@@ -39,7 +42,7 @@ class _MyRecipeState extends State<MyRecipe> {
     final user = authService.currentUser()!;
 
     final ValueNotifier<String> version =
-        ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
+    ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
 
     return Consumer(
       builder: (context, bucketService, child) {
@@ -49,7 +52,11 @@ class _MyRecipeState extends State<MyRecipe> {
           ),
           body: SingleChildScrollView(
             child: Container(
-              child: _buildPanel(),
+              child: RecipeList(items: _items, callbackFunction: (index, isExpanded){
+                setState(() {
+                  _items[index].isExpanded = !isExpanded;
+                });
+              }),
             ),
           ),
           floatingActionButton: FloatingActionButton(
@@ -62,39 +69,5 @@ class _MyRecipeState extends State<MyRecipe> {
       },
     );
   }
-
-  Widget _buildPanel() {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _items[index].isExpanded = !isExpanded;
-        });
-      },
-      children: _items.map<ExpansionPanel>((Item item) {
-        return ExpansionPanel(
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(item.headerValue),
-            );
-          },
-          body: ListTile(
-            title: Text(item.expandedValue),
-          ),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
-    );
-  }
 }
 
-class Item {
-  Item({
-    required this.headerValue,
-    required this.expandedValue,
-    this.isExpanded = false,
-  });
-
-  String headerValue;
-  String expandedValue;
-  bool isExpanded;
-}
