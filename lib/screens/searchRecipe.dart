@@ -44,25 +44,26 @@ class _SearchRecipeState extends State<SearchRecipe> {
             title: Text("레시피", style: TextStyle(fontSize : 30, fontWeight: FontWeight.w700, color: Colors.black)),
             backgroundColor: Colors.white,
           ),
-          body : Container(
-            margin: EdgeInsets.only(left: 20, top: 40),
-            child: Column(
-              children: [
+          body : SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.only(left: 20, top: 40),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height - 120,
+                    child: recipeGrid(
+                        datas : list,
+                        type : true,
+                        callbackFunction:(index){
+                          var title = list[index]["title"]!;
+                          print("$title 값인 $index 번째 데이터가 Callback Function으로 들어왔습니다.");
+                        }
 
-                SizedBox(
-                  height: MediaQuery.of(context).size.height - 120,
-                  child: recipeGrid(
-                      datas : list,
-                      type : true,
-                      callbackFunction:(index){
-                        var title = list[index]["title"]!;
-                        print("$title 값인 $index 번째 데이터가 Callback Function으로 들어왔습니다.");
-                      }
-
-                  ),
-                )
-              ],
-          )
+                    ),
+                  )
+                ],
+            )
+            ),
           ),
         );
       },
