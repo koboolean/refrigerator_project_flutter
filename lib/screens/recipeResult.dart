@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
 
@@ -42,7 +43,7 @@ class _RecipeResultState extends State<RecipeResult> {
             titleSpacing: 0,
             elevation: 0,
             title: Text("레시피", style: TextStyle(fontSize : 25, fontWeight: FontWeight.w200, color: Colors.white)),
-            backgroundColor: Colors.deepOrangeAccent,
+            backgroundColor: THEME_COLOR,
           ),
           body : SingleChildScrollView(
             child: Container(
