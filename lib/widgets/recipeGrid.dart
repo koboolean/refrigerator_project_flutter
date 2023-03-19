@@ -7,7 +7,7 @@ Widget recipeGrid(
     required Function callbackFunction}) {
   return GridView.count(
     shrinkWrap: true,
-    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5), // padding
+    padding: const EdgeInsets.fromLTRB(10, 10, 10, 20), // padding
     crossAxisCount: 2, // 한 열에 보여줄 갯수
     childAspectRatio: 2/1.6, // 상하비율
     children: List.generate(datas.length, (index) {
