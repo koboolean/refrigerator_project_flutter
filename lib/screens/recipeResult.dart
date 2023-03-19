@@ -46,22 +46,20 @@ class _RecipeResultState extends State<RecipeResult> {
             backgroundColor: THEME_COLOR,
           ),
           body : SingleChildScrollView(
-            child: Container(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height - 120,
-                      child: recipeGrid(
-                          datas : list,
-                          type : true,
-                          callbackFunction:(index){
-                            var title = list[index]["title"]!;
-                            print("$title 값인 $index 번째 데이터가 Callback Function으로 들어왔습니다.");
-                          }
-                      ),
-                    )
-                  ],
+            child: Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height - 80,
+                  child: recipeGrid(
+                      datas : list,
+                      type : true,
+                      callbackFunction:(index){
+                        var title = list[index]["title"]!;
+                        print("$title 값인 $index 번째 데이터가 Callback Function으로 들어왔습니다.");
+                      }
+                  ),
                 )
+              ],
             ),
           ),
         );
