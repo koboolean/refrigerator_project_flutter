@@ -42,7 +42,7 @@ class _MyRecipeState extends State<MyRecipe> {
     final user = authService.currentUser()!;
 
     final ValueNotifier<String> version =
-    ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
+        ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
 
     return Consumer(
       builder: (context, bucketService, child) {
@@ -52,11 +52,13 @@ class _MyRecipeState extends State<MyRecipe> {
           ),
           body: SingleChildScrollView(
             child: Container(
-              child: RecipeList(items: _items, callbackFunction: (index, isExpanded){
-                setState(() {
-                  _items[index].isExpanded = !isExpanded;
-                });
-              }),
+              child: RecipeList(
+                  items: _items,
+                  callbackFunction: (index, isExpanded) {
+                    setState(() {
+                      _items[index].isExpanded = !isExpanded;
+                    });
+                  }),
             ),
           ),
           floatingActionButton: FloatingActionButton(
@@ -70,4 +72,3 @@ class _MyRecipeState extends State<MyRecipe> {
     );
   }
 }
-

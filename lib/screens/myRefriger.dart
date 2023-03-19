@@ -19,13 +19,12 @@ class _MyFridgeState extends State<MyFridge> {
     final authService = context.read<AuthService>();
     final user = authService.currentUser()!;
     final ValueNotifier<String> version =
-    ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
+        ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
 
     return Consumer(
       builder: (context, bucketService, child) {
         return Scaffold(
-          body: Column(
-          ),
+          body: Column(),
         );
       },
     );

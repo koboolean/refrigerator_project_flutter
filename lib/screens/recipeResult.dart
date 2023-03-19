@@ -47,7 +47,6 @@ class _RecipeResultState extends State<RecipeResult> {
           ),
           body : SingleChildScrollView(
             child: Container(
-                margin: EdgeInsets.only(left: 20, top: 40),
                 child: Column(
                   children: [
                     SizedBox(
@@ -59,7 +58,6 @@ class _RecipeResultState extends State<RecipeResult> {
                             var title = list[index]["title"]!;
                             print("$title 값인 $index 번째 데이터가 Callback Function으로 들어왔습니다.");
                           }
-
                       ),
                     )
                   ],

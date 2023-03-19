@@ -18,26 +18,25 @@ class _SearchRecipeState extends State<SearchRecipe> {
 
   @override
   Widget build(BuildContext context) {
-
     return Consumer(
       builder: (context, bucketService, child) {
         return Scaffold(
           extendBody: true,
-
-          body : SingleChildScrollView(
+          body: SingleChildScrollView(
             child: Container(
                 margin: EdgeInsets.only(left: 20, top: 40),
                 child: Column(
                   children: [
-                    ElevatedButton(onPressed: (){
-                        Navigator.push(context
-                            , MaterialPageRoute(builder: (context) => RecipeResult())
-                        );
-                    }
-                    , child: Text("레시피 검색"))
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RecipeResult()));
+                        },
+                        child: Text("레시피 검색"))
                   ],
-                )
-            ),
+                )),
           ),
         );
       },
