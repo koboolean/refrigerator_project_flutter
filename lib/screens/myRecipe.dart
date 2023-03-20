@@ -49,6 +49,12 @@ class _MyRecipeState extends State<MyRecipe> {
         return Scaffold(
           appBar: AppBar(
             title: Text('나만의 레시피'),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () {},
+              )
+            ],
           ),
           body: SingleChildScrollView(
             child: Container(
@@ -60,12 +66,6 @@ class _MyRecipeState extends State<MyRecipe> {
                     });
                   }),
             ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              // Do something when the FAB is pressed
-            },
-            child: Icon(Icons.add),
           ),
         );
       },
