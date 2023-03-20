@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/screens/recipeResult.dart';
+import 'package:refrigerator_project_flutter/screens/searchMaterial.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
 
@@ -34,7 +35,15 @@ class _SearchRecipeState extends State<SearchRecipe> {
                               MaterialPageRoute(
                                   builder: (context) => RecipeResult()));
                         },
-                        child: Text("레시피 검색"))
+                        child: Text("레시피 검색")),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SearchMaterial()));
+                        },
+                        child: Text("재료 검색"))
                   ],
                 )),
           ),
