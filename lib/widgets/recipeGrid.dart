@@ -31,28 +31,15 @@ Widget recipeGrid(
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(data["image"]!),
-                            fit: BoxFit.fill))),
-                (type)
-                    ? Positioned(
-                        top: 5,
-                        right: 5,
-                        child: GestureDetector(
-                          onTap: () {
-                            // 정보보기
-                          },
-                          child: Icon(Icons.info, color: Colors.black38),
-                        ))
-                    : Text(""),
-                Positioned(
+                            fit: BoxFit.fill)))
+                , Positioned(
                     bottom: 5,
                     right: 5,
                     child: Text(
                       "일치율 : ($match%)",
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.white30),
-                    )),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, backgroundColor: Colors.white30),
+                    ))
+                ,
               ],
             ),
             Text(
