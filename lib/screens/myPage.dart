@@ -22,7 +22,7 @@ class _MyPageState extends State<MyPage> {
     final authService = context.read<AuthService>();
     final user = authService.currentUser()!;
     final ValueNotifier<String> version =
-    ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
+        ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
 
     rootBundle.loadString("pubspec.yaml").then((yamlValue) {
       var yaml = loadYaml(yamlValue);
@@ -56,19 +56,15 @@ class _MyPageState extends State<MyPage> {
                 children: [
                   Center(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child:  (user.displayName == null) ?
-                      Icon(Icons.account_circle, size: 158,
-                        color: Colors.grey,):
-                      Image.network(user.photoURL.toString(),
-                          width: 158, height: 158, fit: BoxFit.fill),
-                    ),
+                        borderRadius: BorderRadius.circular(100),
+                        child: Icon(
+                          Icons.account_circle,
+                          size: 158,
+                          color: Colors.grey,
+                        )),
                   ),
                   SizedBox(height: 15),
-                  Text(
-                    (user.displayName != null) ? '${user.displayName}' : "IOS사용자",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                  ),
+                  Text('${user.displayName}'),
                   Text(
                     '${user.email}',
                     style: TextStyle(
@@ -97,7 +93,7 @@ class _MyPageState extends State<MyPage> {
                     Text(
                       "앱 설정",
                       style:
-                      TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/screens/homePage.dart';
 import 'package:refrigerator_project_flutter/screens/loginPage.dart';
 
@@ -26,7 +27,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = context.read<AuthService>().currentUser();
+    final ThemeData theme = ThemeData();
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: THEME_COLOR,
+        appBarTheme: AppBarTheme(
+            color: THEME_COLOR
+        ),
+        buttonTheme: ButtonThemeData(
+          buttonColor: THEME_COLOR
+        ),
+        colorScheme: theme.colorScheme.copyWith(secondary: THEME_COLOR)
+      ),
       debugShowCheckedModeBanner: false,
       home: user == null ? LoginPage() : HomePage(),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/screens/myPage.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipe.dart';
 import 'package:refrigerator_project_flutter/screens/myRefriger.dart';
@@ -47,25 +48,25 @@ class _HomePageState extends State<HomePage> {
           type: BottomNavigationBarType.fixed,
           onTap: _onTap,
           currentIndex: _currentIndex,
-          selectedItemColor: Color.fromRGBO(221, 81, 37, 1),
+          selectedItemColor: THEME_COLOR,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.kitchen),
-              activeIcon: Icon(Icons.kitchen, color: Color.fromRGBO(221, 81, 37, 1)),
+              activeIcon: Icon(Icons.kitchen, color: THEME_COLOR),
               label: '냉장고',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.menu_book),
-              activeIcon: Icon(Icons.menu_book, color: Color.fromRGBO(221, 81, 37, 1)),
+              activeIcon: Icon(Icons.menu_book, color: THEME_COLOR),
               label: '레시피 검색',
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.create),
-                activeIcon: Icon(Icons.create, color: Color.fromRGBO(221, 81, 37, 1)),
+                activeIcon: Icon(Icons.create, color: THEME_COLOR),
                 label: '나의 레시피'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.account_circle),
-                activeIcon: Icon(Icons.account_circle, color: Color.fromRGBO(221, 81, 37, 1)),
+                activeIcon: Icon(Icons.account_circle, color: THEME_COLOR),
                 label: 'MY페이지'),
           ],
         ),
