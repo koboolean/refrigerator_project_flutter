@@ -12,7 +12,7 @@ class SearchMaterial extends StatefulWidget {
   State<SearchMaterial> createState() => _SearchMaterialState();
 }
 
-class _SearchMaterialState extends State<SearchMaterial> {
+class _SearchMaterialState extends State<SearchMaterial> with TickerProviderStateMixin {
   TextEditingController jobController = TextEditingController();
 
   @override
