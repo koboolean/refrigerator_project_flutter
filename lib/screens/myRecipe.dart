@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/model/recipeItem.dart';
+import 'package:refrigerator_project_flutter/model/myrecipeItem.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
+import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
+import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
 
 /// 홈페이지
 class MyRecipe extends StatefulWidget {
@@ -14,61 +17,49 @@ class MyRecipe extends StatefulWidget {
 }
 
 class _MyRecipeState extends State<MyRecipe> {
-  TextEditingController jobController = TextEditingController();
-
+  // 임시 데이터 생성
   // ignore: prefer_final_fields
-  List<RecipeItem> _items = [
-    RecipeItem(
-      headerValue: '피자',
-      expandedValue: '2023 01 01',
-      isExpanded: false,
+  final foods = [
+    myrecipeItem(
+      title: '피자',
+      modifiedDate: DateTime.now(),
+      isFavorite: true,
     ),
-    RecipeItem(
-      headerValue: '김치찌게',
-      expandedValue: '2023 01 01',
-      isExpanded: false,
+    myrecipeItem(
+      title: '김치찌게',
+      modifiedDate: DateTime.now().subtract(Duration(days: 1)),
+      isFavorite: false,
     ),
-    RecipeItem(
-      headerValue: '해물파전',
-      expandedValue: '2023 01 03',
-      isExpanded: false,
+    myrecipeItem(
+      title: '햄버거',
+      modifiedDate: DateTime.now().subtract(Duration(days: 2)),
+      isFavorite: true,
     ),
   ];
-  bool _showAddButton = true;
+
+  // bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
-    final authService = context.read<AuthService>();
-    final user = authService.currentUser()!;
-
-    final ValueNotifier<String> version =
-        ValueNotifier<String>("1.0"); // ValueNotifier 변수 선언
-
-    return Consumer(
-      builder: (context, bucketService, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('나만의 레시피'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () {},
-              )
-            ],
+    return MaterialApp(
+      title: 'Food App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Food App'),
+        ),
+        body: Center(
+          child: FoodListView(
+            foods: foods,
+            callbackFunction: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => myRecipeDetail(),
+                  ));
+            },
           ),
-          body: SingleChildScrollView(
-            child: Container(
-              child: RecipeList(
-                  items: _items,
-                  callbackFunction: (index, isExpanded) {
-                    setState(() {
-                      _items[index].isExpanded = !isExpanded;
-                    });
-                  }),
-            ),
-          ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
