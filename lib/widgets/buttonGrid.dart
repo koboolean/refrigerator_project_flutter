@@ -1,55 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:refrigerator_project_flutter/constants/color.dart';
 
-Widget buttonGrid(
-    {required List<Map<String, String>> datas,
-    required bool type,
-    required Function callbackFunction}) {
+Widget buttonGrid({required List<Map<String, String>> datas}) {
+  final ButtonStyle style = ElevatedButton.styleFrom(
+      backgroundColor: Color.fromARGB(255, 55, 218, 209),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0));
+
   return GridView.count(
     shrinkWrap: true,
-    padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
+    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+
     // padding
     crossAxisCount: 3,
     // 한 열에 보여줄 갯수
-    childAspectRatio: 2 / 1.7,
+    childAspectRatio: 2 / 1,
     // 상하비율
     children: List.generate(datas.length, (index) {
       var data = datas[index];
-      var match = data["match"]!;
-      return GestureDetector(
-          onTap: () {
-            // callbackFunction 호출하여 작업할까 고민중... (재사용 관련)
-            callbackFunction(index);
-          },
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Stack(
-              children: [
-                Container(
-                    margin: EdgeInsets.all(3.0), // margin
-                    height: 100,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(data["image"]!),
-                            fit: BoxFit.fill))),
-                Positioned(
-                    bottom: 5,
-                    right: 5,
-                    child: Text(
-                      "일치율 : ($match%)",
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.white30),
-                    )),
-              ],
-            ),
-            Text(
-              data["title"]!,
-              style: TextStyle(fontSize: 16),
-              overflow: TextOverflow.fade,
-              maxLines: 1,
-            )
-          ]));
+      return Stack(children: [
+        SizedBox(
+          width: 100,
+          height: 50,
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(5, 5, 3, 3),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  data["materialName"]!,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              )),
+        ),
+        Positioned(
+            top: 1,
+            right: 1,
+            width: 25,
+            height: 25,
+            child: ElevatedButton(
+              style: style,
+              onPressed: () {},
+              child: Text(
+                "ㅡ",
+              ),
+            ))
+      ]);
     }),
   );
 }
