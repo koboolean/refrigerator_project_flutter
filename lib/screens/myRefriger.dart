@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
+import 'package:refrigerator_project_flutter/model/recipeItem.dart';
+import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
 
 /// 홈페이지
@@ -14,6 +16,25 @@ class MyFridge extends StatefulWidget {
 
 class _MyFridgeState extends State<MyFridge> with TickerProviderStateMixin {
   TextEditingController jobController = TextEditingController();
+
+  // ignore: prefer_final_fields
+  List<RecipeItem> _items = [
+    RecipeItem(
+      headerValue: '피자',
+      expandedValue: '2023 01 01',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '김치찌게',
+      expandedValue: '2023 01 01',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -152,13 +173,15 @@ class _MyFridgeState extends State<MyFridge> with TickerProviderStateMixin {
                         controller: _tabController,
                         children: [
                           Container(
-                            color: Colors.yellow[200],
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Tab1 View',
-                              style: TextStyle(
-                                fontSize: 30,
-                              ),
+                            child: RecipeList(
+                              items: _items,
+                              callbackFunction: (index, isExpanded) {
+                                setState(
+                                  () {
+                                    _items[index].isExpanded = !isExpanded;
+                                  },
+                                );
+                              },
                             ),
                           ),
                           Container(
