@@ -42,20 +42,19 @@ class _MyRecipeState extends State<MyRecipe> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Food App',
+      title: '나만의 레시피',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Food App'),
+          title: Text('나만의 레시피'),
         ),
         body: Center(
           child: FoodListView(
             foods: foods,
             callbackFunction: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => myRecipeDetail(),
-                  ));
+                context,
+                MaterialPageRoute(builder: (context) => myRecipeDetail()),
+              );
             },
           ),
         ),

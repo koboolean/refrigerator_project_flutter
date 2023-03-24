@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget recipeGrid(
+Widget recipeGrid_One(
     {required List<Map<String, String>> datas,
     required bool type,
     required Function callbackFunction}) {
