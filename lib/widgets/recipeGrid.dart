@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:refrigerator_project_flutter/model/recipeCategory.dart';
 
 Widget recipeGrid(
-    {required List<Map<String, String>> datas,
+    {required List<RecipeCategory> datas,
     required bool type,
     required Function callbackFunction}) {
   return GridView.count(
@@ -15,7 +16,7 @@ Widget recipeGrid(
     // 상하비율
     children: List.generate(datas.length, (index) {
       var data = datas[index];
-      var match = data["match"]!;
+      var match = data.match;
       return GestureDetector(
           onTap: () {
             // callbackFunction 호출하여 작업할까 고민중... (재사용 관련)
@@ -30,7 +31,7 @@ Widget recipeGrid(
                     height: 100,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(data["image"]!),
+                            image: NetworkImage(data.image),
                             fit: BoxFit.fill)))
                 , Positioned(
                     bottom: 5,
@@ -43,7 +44,7 @@ Widget recipeGrid(
               ],
             ),
             Text(
-              data["title"]!,
+              data.title,
               style: TextStyle(fontSize: 16),
               overflow: TextOverflow.fade,
               maxLines: 1,
