@@ -26,74 +26,87 @@ class _RecipeResultState extends State<RecipeResult> {
       {
         "title": "참치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
+
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       },
       {
         "title": "김치찌개",
         "match": "60",
-        "image":
-            "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+        "image": "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
+        "item" : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+        "necItem" : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"
       }
     ];
 
@@ -133,7 +146,7 @@ class _RecipeResultState extends State<RecipeResult> {
                                           fit: BoxFit.fill))),
                               SingleChildScrollView(
                                 child: Container(
-                                    margin: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                                    margin: EdgeInsets.all(10),
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
@@ -149,9 +162,9 @@ class _RecipeResultState extends State<RecipeResult> {
                                         Row(
                                           children: [
                                             SizedBox(
-                                              width: width * 0.7,
+                                              width: width * 0.65,
                                               child: Text(
-                                                "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+                                                data["item"]!,
                                                 style: TextStyle(fontSize: 12),
                                                 overflow: TextOverflow.fade,
                                                 maxLines: 1,
@@ -162,9 +175,9 @@ class _RecipeResultState extends State<RecipeResult> {
                                         Row(
                                           children: [
                                             SizedBox(
-                                              width: width * 0.7,
+                                              width: width * 0.65,
                                               child: Text(
-                                                "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치",
+                                                data["necItem"]!,
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     color: Colors.red),
