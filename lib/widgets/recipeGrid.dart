@@ -11,7 +11,7 @@ Widget recipeGrid(
     // padding
     crossAxisCount: 2,
     // 한 열에 보여줄 갯수
-    childAspectRatio: 2 / 1.7,
+    childAspectRatio: 2 / 1.85,
     // 상하비율
     children: List.generate(datas.length, (index) {
       var data = datas[index];

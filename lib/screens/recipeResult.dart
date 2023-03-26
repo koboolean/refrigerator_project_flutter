@@ -20,7 +20,7 @@ class _RecipeResultState extends State<RecipeResult> {
   Widget build(BuildContext context) {
     final authService = context.read<AuthService>();
     final user = authService.currentUser()!;
-
+    final width = MediaQuery.of(context).size.width;
     // 임시 데이터 생성
     var list = [
       {
@@ -122,6 +122,7 @@ class _RecipeResultState extends State<RecipeResult> {
                     builder: (BuildContext context) {
                       return AlertDialog(
                         content: Column(
+                            mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(
@@ -130,53 +131,54 @@ class _RecipeResultState extends State<RecipeResult> {
                                       image: DecorationImage(
                                           image: NetworkImage(data["image"]!),
                                           fit: BoxFit.fill))),
-                              Container(
-                                  margin: EdgeInsets.only(left: 30, right: 30, top: 5, bottom: 5),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(data["title"]!,
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.w300)),
-                                        ],
-                                      ),
-                                      SizedBox(height: 5),
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 200,
-                                            child: Text(
-                                              "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
-                                              style: TextStyle(fontSize: 12),
-                                              overflow: TextOverflow.fade,
-                                              maxLines: 1,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 200,
-                                            child: Text(
-                                              "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치",
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Colors.red),
-                                              overflow: TextOverflow.fade,
-                                              maxLines: 2,
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ))
+                              SingleChildScrollView(
+                                child: Container(
+                                    margin: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(data["title"]!,
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.w300)),
+                                          ],
+                                        ),
+                                        SizedBox(height: 5),
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: width * 0.7,
+                                              child: Text(
+                                                "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+                                                style: TextStyle(fontSize: 12),
+                                                overflow: TextOverflow.fade,
+                                                maxLines: 1,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: width * 0.7,
+                                              child: Text(
+                                                "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.red),
+                                                overflow: TextOverflow.fade,
+                                                maxLines: 2,
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    )),
+                              )
                             ]),
                         contentPadding: EdgeInsets.zero,
-                        insetPadding: const EdgeInsets.fromLTRB(0, 200, 0, 210),
                         actions: [
                           TextButton(
                             child: const Text('요리 시작하기'),
