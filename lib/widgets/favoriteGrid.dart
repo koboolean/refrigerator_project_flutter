@@ -29,7 +29,7 @@ Widget FoodListView({required foods, required Function callbackFunction}) {
         ),
         onTap: () {
           // TODO: 음식 레시피 상세 페이지로 이동하는 코드 구현
-          callbackFunction;
+          callbackFunction();
         },
       );
     },
