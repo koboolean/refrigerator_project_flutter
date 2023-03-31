@@ -9,6 +9,7 @@ import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
+import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 
 class myRecipeDetail extends StatelessWidget {
   var list = [
@@ -26,6 +27,16 @@ class myRecipeDetail extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('레시피 상세'),
+          actions: [
+            IconButton(
+                icon: Icon(Icons.add_box),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => myRecipeAdd()),
+                  );
+                })
+          ],
         ),
         body: Center(
           child: recipeGrid_One(
