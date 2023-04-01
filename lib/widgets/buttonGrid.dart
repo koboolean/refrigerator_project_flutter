@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:refrigerator_project_flutter/constants/color.dart';
 
-Widget buttonGrid({required List<Map<String, String>> datas}) {
+Widget buttonGrid(
+    {required List<Map<String, String>> datas, required Function removeItem}) {
   final ButtonStyle style = ElevatedButton.styleFrom(
       backgroundColor: Color.fromARGB(255, 55, 218, 209),
       padding: EdgeInsets.fromLTRB(0, 0, 0, 0));
@@ -38,7 +38,14 @@ Widget buttonGrid({required List<Map<String, String>> datas}) {
             height: 25,
             child: ElevatedButton(
               style: style,
-              onPressed: () {},
+              onPressed: () {
+                // ignore: list_remove_unrelated_type
+
+                // for (var i = 0; i < datas.length; i++) {
+                //   log(datas[i].toString());
+                // }
+                removeItem(index);
+              },
               child: Text(
                 "ㅡ",
               ),

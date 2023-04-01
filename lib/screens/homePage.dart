@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/screens/myPage.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipe.dart';
 import 'package:refrigerator_project_flutter/screens/myRefriger.dart';
-import 'package:refrigerator_project_flutter/screens/searchRecipe.dart';
+import 'package:refrigerator_project_flutter/screens/searchMaterial.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
 
 /// 홈페이지
@@ -22,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _childrenWidget = [
     MyFridge(), // 나의 냉장고
-    SearchRecipe(), // 레시피 검색
+    SearchMaterial(), // 레시피 검색
     MyRecipe(), // 나의 레시피
     MyPage() // 마이페이지
   ];
