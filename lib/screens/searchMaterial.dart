@@ -38,6 +38,7 @@ class _SearchMaterialState extends State<SearchMaterial>
 
   @override
   Widget build(BuildContext context) {
+    //임시데이타
     var list = [
       {
         "materialName": "양파", // 식재료 이름
@@ -80,10 +81,9 @@ class _SearchMaterialState extends State<SearchMaterial>
       appBar: AppBar(
         title: Text("재료 관리"),
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Padding(
+      body: Column(
+        children: [
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,48 +91,63 @@ class _SearchMaterialState extends State<SearchMaterial>
                 const SizedBox(
                   height: 10,
                 ),
-                DropDownTextField(
-                  // initialValue: "name4",
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 300,
+                      child: DropDownTextField(
+                        // initialValue: "name4",
 
-                  listSpace: 20,
-                  listPadding: ListPadding(top: 20),
-                  enableSearch: true,
-                  validator: (value) {
-                    if (value == null) {
-                      return "Required field";
-                    } else {
-                      return null;
-                    }
-                  },
-                  dropDownList: const [
-                    DropDownValueModel(name: 'name1', value: "value1"),
-                    DropDownValueModel(name: 'name2', value: "value2"),
-                    DropDownValueModel(name: 'name3', value: "value3"),
-                    DropDownValueModel(name: 'name4', value: "value4"),
-                    DropDownValueModel(name: 'name5', value: "value5"),
-                    DropDownValueModel(name: 'name6', value: "value6"),
-                    DropDownValueModel(name: 'name7', value: "value7"),
-                    DropDownValueModel(name: 'name8', value: "value8"),
+                        listSpace: 20,
+                        listPadding: ListPadding(top: 20),
+                        enableSearch: true,
+                        validator: (value) {
+                          if (value == null) {
+                            return "Required field";
+                          } else {
+                            return null;
+                          }
+                        },
+                        dropDownList: const [
+                          DropDownValueModel(name: 'name1', value: "value1"),
+                          DropDownValueModel(name: 'name2', value: "value2"),
+                          DropDownValueModel(name: 'name3', value: "value3"),
+                          DropDownValueModel(name: 'name4', value: "value4"),
+                          DropDownValueModel(name: 'name5', value: "value5"),
+                          DropDownValueModel(name: 'name6', value: "value6"),
+                          DropDownValueModel(name: 'name7', value: "value7"),
+                          DropDownValueModel(name: 'name8', value: "value8"),
+                        ],
+                        listTextStyle: const TextStyle(color: Colors.red),
+                        dropDownItemCount: 8,
+
+                        onChanged: (val) {},
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "추가",
+                      ),
+                    )
                   ],
-                  listTextStyle: const TextStyle(color: Colors.red),
-                  dropDownItemCount: 8,
-
-                  onChanged: (val) {},
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 30,
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 50,
                   child: Text("지금 냉장고 재료", style: TextStyle(fontSize: 20)),
                 ),
-                buttonGrid(
-                  datas: list,
-                ),
+                SingleChildScrollView(
+                  child: buttonGrid(
+                    datas: list,
+                  ),
+                )
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }
