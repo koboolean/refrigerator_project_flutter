@@ -34,6 +34,51 @@ class _MyFridgeState extends State<MyFridge> with TickerProviderStateMixin {
       expandedValue: '2023 01 03',
       isExpanded: false,
     ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
+    RecipeItem(
+      headerValue: '해물파전',
+      expandedValue: '2023 01 03',
+      isExpanded: false,
+    ),
   ];
 
   @override
@@ -45,176 +90,173 @@ class _MyFridgeState extends State<MyFridge> with TickerProviderStateMixin {
 
     @override
     void initState() {
-      _tabController = TabController(length: 2, vsync: this);
+      _tabController = TabController(length: 3, vsync: this);
       super.initState();
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text("냉장고 관리"),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                      width: 250,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "Material Search",
-                          ),
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w200),
-                        ),
-                      )),
-                  Container(
-                    width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: THEME_COLOR,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            margin: EdgeInsets.all(10),
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                    width: 250,
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(20, 15, 15, 15),
-                      child: Text(
-                        "+",
-                        style: TextStyle(
-                          fontSize: 18,
+                      padding: EdgeInsets.symmetric(),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Material Search",
                         ),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w200),
+                      ),
+                    )),
+                Container(
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: THEME_COLOR,
+                      style: BorderStyle.solid,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20, 15, 15, 15),
+                    child: Text(
+                      "+",
+                      style: TextStyle(
+                        fontSize: 18,
                       ),
                     ),
                   ),
-                  Container(
-                    width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                ),
+                Container(
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: THEME_COLOR,
+                    border: Border.all(
                       color: THEME_COLOR,
-                      border: Border.all(
-                        color: THEME_COLOR,
-                        style: BorderStyle.solid,
+                      style: BorderStyle.solid,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(8, 15, 4, 15),
+                    child: Text(
+                      "add",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
                       ),
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(8, 15, 4, 15),
-                      child: Text(
-                        "add",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height - 200,
+            child: DefaultTabController(
+              length: 3,
+              initialIndex: 0,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TabBar(
+                    tabs: [
+                      Container(
+                        height: 30,
+                        alignment: Alignment.center,
+                        child: Text(
+                          '전체',
                         ),
                       ),
+                      Container(
+                        height: 30,
+                        alignment: Alignment.center,
+                        child: Text(
+                          '유통기한 임박',
+                        ),
+                      ),
+                      Container(
+                        height: 30,
+                        alignment: Alignment.center,
+                        child: Text(
+                          '최근 차감된 재료',
+                        ),
+                      ),
+                    ],
+                    // indicator: BoxDecoration(
+                    //   gradient: LinearGradient(
+                    //     //배경 그라데이션 적용
+                    //     begin: Alignment.centerLeft,
+                    //     end: Alignment.centerRight,
+                    //     colors: [
+                    //       Colors.blueAccent,
+                    //       Colors.pinkAccent,
+                    //     ],
+                    //   ),
+                    // ),
+                    labelColor: THEME_COLOR,
+                    unselectedLabelColor: Color.fromARGB(255, 165, 165, 165),
+                    controller: _tabController,
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        SingleChildScrollView(
+                          child: RecipeList(
+                            items: _items,
+                            callbackFunction: (index, isExpanded) {
+                              setState(
+                                () {
+                                  _items[index].isExpanded = !isExpanded;
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        Container(
+                            // color: Colors.green[200],
+                            // alignment: Alignment.center,
+                            // child: Text(
+                            //   'Tab2 View',
+                            //   style: TextStyle(
+                            //     fontSize: 30,
+                            //   ),
+                            // ),
+                            ),
+                        Container(
+                            // color: Colors.blue[200],
+                            // alignment: Alignment.center,
+                            // child: Text(
+                            //   'Tab3 View',
+                            //   style: TextStyle(
+                            //     fontSize: 30,
+                            //   ),
+                            // ),
+                            ),
+                      ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height - 200,
-              child: DefaultTabController(
-                length: 3,
-                initialIndex: 0,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TabBar(
-                      tabs: [
-                        Container(
-                          height: 30,
-                          alignment: Alignment.center,
-                          child: Text(
-                            '전체',
-                          ),
-                        ),
-                        Container(
-                          height: 30,
-                          alignment: Alignment.center,
-                          child: Text(
-                            '유통기한 임박',
-                          ),
-                        ),
-                        Container(
-                          height: 30,
-                          alignment: Alignment.center,
-                          child: Text(
-                            '최근 차감된 재료',
-                          ),
-                        ),
-                      ],
-                      // indicator: BoxDecoration(
-                      //   gradient: LinearGradient(
-                      //     //배경 그라데이션 적용
-                      //     begin: Alignment.centerLeft,
-                      //     end: Alignment.centerRight,
-                      //     colors: [
-                      //       Colors.blueAccent,
-                      //       Colors.pinkAccent,
-                      //     ],
-                      //   ),
-                      // ),
-                      labelColor: THEME_COLOR,
-                      unselectedLabelColor: Color.fromARGB(255, 165, 165, 165),
-                      controller: _tabController,
-                    ),
-                    Expanded(
-                      child: TabBarView(
-                        controller: _tabController,
-                        children: [
-                          Container(
-                            child: SingleChildScrollView(
-                              child: RecipeList(
-                                items: _items,
-                                callbackFunction: (index, isExpanded) {
-                                  setState(
-                                    () {
-                                      _items[index].isExpanded = !isExpanded;
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          Container(
-                            color: Colors.green[200],
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Tab2 View',
-                              style: TextStyle(
-                                fontSize: 30,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            color: Colors.blue[200],
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Tab3 View',
-                              style: TextStyle(
-                                fontSize: 30,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

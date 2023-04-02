@@ -20,6 +20,8 @@ class myRecipeDetail extends StatelessWidget {
           "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
     },
   ];
+
+  myRecipeDetail({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
