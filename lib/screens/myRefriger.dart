@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
-import 'package:refrigerator_project_flutter/model/recipeItem.dart';
+import 'package:refrigerator_project_flutter/model/myRefrigeritem.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 import 'package:refrigerator_project_flutter/services/auth_service.dart';
 
@@ -18,65 +18,89 @@ class _MyFridgeState extends State<MyFridge> with TickerProviderStateMixin {
   TextEditingController jobController = TextEditingController();
 
   // ignore: prefer_final_fields
-  List<RecipeItem> _items = [
-    RecipeItem(
-      headerValue: '피자',
+  List<RefrigerItem> _items = [
+    RefrigerItem(
+      headerValue: '당근',
+      headersubValue: "100g",
       expandedValue: '2023 01 01',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '김치찌게',
+      headersubValue: "100g",
       expandedValue: '2023 01 01',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
-    RecipeItem(
+    RefrigerItem(
       headerValue: '해물파전',
+      headersubValue: "100g",
       expandedValue: '2023 01 03',
+      categoryValue: "야채",
       isExpanded: false,
     ),
   ];
