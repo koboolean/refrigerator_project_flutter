@@ -28,7 +28,8 @@ class _RecipeResultState extends State<RecipeResult> {
           image:
               "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
           item : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
-          necItem : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"),
+          necItem : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치",
+          totalTime: "60"),
     ];
 
     return Consumer(
@@ -50,11 +51,12 @@ class _RecipeResultState extends State<RecipeResult> {
               type: true,
               callbackFunction: (index) {
                 var data = list[index];
+                var type = "view"; // type - edit, view
                 return showDialog(
                     context: context,
-                    barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                    barrierDismissible: type == "edit" ? false : true, // 바깥 영역 터치시 닫을지 여부 (edit일 경우 false)
                     builder: (BuildContext context) {
-                      return recipeDialog(widthResult : width, recipeCategory : data, callbackFunc : (){
+                      return recipeDialog(widthResult : width, recipeCategory : data, type : type, callbackFunc : (){
                         print("data${data.title}");
                       });
                     });
