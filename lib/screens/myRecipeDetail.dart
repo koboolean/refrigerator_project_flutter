@@ -39,7 +39,7 @@ class myRecipeDetail extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => myRecipeAdd()),
                   );
-                })
+                }),
           ],
         ),
         body: Center(
