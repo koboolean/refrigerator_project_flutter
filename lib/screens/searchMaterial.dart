@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/screens/recipeResult.dart';
@@ -182,8 +180,7 @@ class _SearchMaterialState extends State<SearchMaterial>
             FloatingActionButton.extended(
               onPressed: () {
                 // Add your onPressed code here!
-                log("message");
-                print('Hello, World!');
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
