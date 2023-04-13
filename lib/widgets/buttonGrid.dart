@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 Widget buttonGrid(
-    {required List<Map<String, String>> datas, required Function removeItem}) {
+    {required List<Map<String, String>> datas,
+    required Function funcRemoveItem}) {
   final ButtonStyle style = ElevatedButton.styleFrom(
       backgroundColor: Color.fromARGB(255, 55, 218, 209),
       padding: EdgeInsets.fromLTRB(0, 0, 0, 0));
@@ -16,14 +17,24 @@ Widget buttonGrid(
     childAspectRatio: 2 / 1,
     // 상하비율
     children: List.generate(datas.length, (index) {
+      //Color textColor = someCondition ? Colors.red : Colors.black;
+
       var data = datas[index];
+
+      ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+        backgroundColor: data["type"] == "add"
+            ? Color.fromARGB(255, 151, 127, 127)
+            : Color.fromARGB(255, 55, 155, 212),
+      );
+
       return Stack(children: [
         SizedBox(
-          width: 100,
+          width: 110,
           height: 50,
           child: Padding(
               padding: EdgeInsets.fromLTRB(5, 5, 3, 3),
               child: ElevatedButton(
+                style: buttonStyle,
                 onPressed: () {},
                 child: Text(
                   data["materialName"]!,
@@ -44,7 +55,7 @@ Widget buttonGrid(
                 // for (var i = 0; i < datas.length; i++) {
                 //   log(datas[i].toString());
                 // }
-                removeItem(index);
+                funcRemoveItem(index);
               },
               child: Text(
                 "ㅡ",

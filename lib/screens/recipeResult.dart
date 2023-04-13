@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
@@ -19,6 +20,11 @@ class _RecipeResultState extends State<RecipeResult> {
 
   @override
   Widget build(BuildContext context) {
+    final List<dynamic> arguments =
+        ModalRoute.of(context)!.settings.arguments as List<dynamic>;
+
+    log(arguments.toString());
+
     final width = MediaQuery.of(context).size.width;
     // 임시 데이터 생성
     List<RecipeCategory> list = [
@@ -27,8 +33,9 @@ class _RecipeResultState extends State<RecipeResult> {
           match: "60",
           image:
               "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
-          item : "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
-          necItem : "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"),
+          item:
+              "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
+          necItem: "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치"),
     ];
 
     return Consumer(
@@ -54,9 +61,12 @@ class _RecipeResultState extends State<RecipeResult> {
                     context: context,
                     barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
                     builder: (BuildContext context) {
-                      return recipeDialog(widthResult : width, recipeCategory : data, callbackFunc : (){
-                        print("data${data.title}");
-                      });
+                      return recipeDialog(
+                          widthResult: width,
+                          recipeCategory: data,
+                          callbackFunc: () {
+                            print("data${data.title}");
+                          });
                     });
               }),
         );
