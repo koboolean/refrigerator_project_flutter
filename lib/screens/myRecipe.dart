@@ -7,6 +7,7 @@ import 'package:refrigerator_project_flutter/services/auth_service.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
+import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 
 /// 홈페이지
 class MyRecipe extends StatefulWidget {
@@ -44,21 +45,41 @@ class _MyRecipeState extends State<MyRecipe> {
     return MaterialApp(
       title: '나만의 레시피',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('나만의 레시피'),
-        ),
-        body: Center(
-          child: FoodListView(
-            foods: foods,
-            callbackFunction: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => myRecipeDetail()),
-              );
-            },
+          appBar: AppBar(
+            title: Text('나만의 레시피'),
           ),
-        ),
-      ),
+          body: Center(
+            child: FoodListView(
+              foods: foods,
+              callbackFunction: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => myRecipeDetail()),
+                );
+              },
+            ),
+          ),
+          floatingActionButton: Stack(
+            children: [
+              FloatingActionButton.extended(
+                onPressed: () {
+                  // Add your onPressed code here!
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => myRecipeAdd()),
+                  );
+                },
+                label: Row(
+                  children: [Text("레시피 추가"), Icon(Icons.chevron_right_sharp)],
+                ),
+                backgroundColor: Colors.pink,
+              ),
+              SizedBox(
+                height: 100,
+              )
+            ],
+          )),
     );
   }
 }

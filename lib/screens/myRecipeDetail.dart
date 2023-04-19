@@ -12,6 +12,7 @@
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid_One.dart';
+import 'package:refrigerator_project_flutter/screens/myRecipe.dart';
 
 class myRecipeDetail extends StatelessWidget {
   var list = [
@@ -40,13 +41,28 @@ class myRecipeDetail extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => myRecipeAdd()),
                   );
                 }),
+            IconButton(
+              icon: const Icon(Icons.navigate_next),
+              tooltip: 'Next page',
+              onPressed: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => myRecipe()),
+                // );
+              },
+            ),
           ],
         ),
         body: Center(
           child: recipeGrid_One(
             datas: list,
             type: true,
-            callbackFunction: () {},
+            callbackFunction: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => myRecipeAdd()),
+              );
+            },
             context: context,
           ),
         ),
