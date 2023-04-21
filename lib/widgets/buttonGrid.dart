@@ -10,7 +10,6 @@ Widget buttonGrid(
   return GridView.count(
     shrinkWrap: true,
     padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-
     // padding
     crossAxisCount: 3,
     // 한 열에 보여줄 갯수

@@ -8,16 +8,47 @@
 // import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 // import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 
+// ignore_for_file: camel_case_types
+
 // import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid_One.dart';
-import 'package:refrigerator_project_flutter/screens/myRecipe.dart';
 
 class myRecipeDetail extends StatelessWidget {
-  var list = [
+  final list = [
     {
+      "step": "Intro",
       "title": "참치찌개",
+      "time": "60",
+      "contents": "갈비찜을밥위에올려주세요",
+      "match": "60",
+      "image":
+          "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+    },
+    {
+      "step": "Step1",
+      "title": "참치찌개",
+      "time": "30",
+      "contents": "갈비찜을밥이랑비벼주세요",
+      "match": "60",
+      "image":
+          "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+    },
+    {
+      "step": "Step2",
+      "title": "참치찌개",
+      "time": "90",
+      "contents": "내가제일좋아하는갈비찜덮밥",
+      "match": "60",
+      "image":
+          "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
+    },
+    {
+      "step": "Step3",
+      "title": "참치찌개",
+      "time": "90",
+      "contents": "내가제일좋아하는갈비찜덮밥",
       "match": "60",
       "image":
           "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg"
