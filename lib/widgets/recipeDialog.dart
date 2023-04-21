@@ -11,6 +11,11 @@ Widget recipeDialog({required double widthResult, required RecipeCategory recipe
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          type == "edit" ?
+          Container(height : 80, decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/upload_food_icon.png'),
+                  fit: BoxFit.fill))) :
           Container(
               height: 180,
               decoration: BoxDecoration(
