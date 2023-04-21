@@ -31,6 +31,7 @@ class myRecipeDetail extends StatelessWidget {
       title: '레시피상세',
       home: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: true,
           title: Text('레시피 상세'),
           actions: [
             IconButton(
@@ -41,16 +42,16 @@ class myRecipeDetail extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => myRecipeAdd()),
                   );
                 }),
-            IconButton(
-              icon: const Icon(Icons.navigate_next),
-              tooltip: 'Next page',
-              onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => myRecipe()),
-                // );
-              },
-            ),
+            // IconButton(
+            //   icon: const Icon(Icons.navigate_next),
+            //   tooltip: 'Next page',
+            //   onPressed: () {
+            //     // Navigator.push(
+            //     //   context,
+            //     //   MaterialPageRoute(builder: (context) => myRecipe()),
+            //     // );
+            //   },
+            // ),
           ],
         ),
         body: Center(
