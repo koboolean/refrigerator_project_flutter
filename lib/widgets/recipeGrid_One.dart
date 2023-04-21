@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-final _timeController = TextEditingController();
-final _textController = TextEditingController();
+// final _timeController = TextEditingController();
+// final _textController = TextEditingController();
+
 Widget recipeGrid_One(
     {required List<Map<String, String>> datas,
     required bool type,
@@ -11,15 +10,13 @@ Widget recipeGrid_One(
     required BuildContext context}) {
   return GridView.count(
     shrinkWrap: true,
-    padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
-    // padding
-    crossAxisCount: 1,
-    // 한 열에 보여줄 갯수
-
-    // 상하비율
+    padding: const EdgeInsets.fromLTRB(10, 30, 10, 10), // padding
+    crossAxisCount: 1, // 한 열에 보여줄 갯수
+    childAspectRatio: 1 / 3, // 상하비율
     children: List.generate(datas.length, (index) {
       var data = datas[index];
       var match = data["match"]!;
+
       return GestureDetector(
           onTap: () {
             callbackFunction();
@@ -102,36 +99,28 @@ Widget recipeGrid_One(
           },
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text("Step${data["step"]}",
+                      style: TextStyle(fontSize: 30)),
+                ),
+                Icon(Icons.timer_outlined, size: 30),
+              ],
+            ),
+            Row(children: [
+              Text("${data["time"]} +",
+                  style: TextStyle(color: Color.fromARGB(255, 9, 175, 175)))
+            ]),
             Stack(
               children: [
                 Container(
                     margin: EdgeInsets.all(3.0), // margin
-                    height: 100,
+                    height: 200,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(data["image"]!),
                             fit: BoxFit.fill))),
-                (type)
-                    ? Positioned(
-                        top: 5,
-                        right: 5,
-                        child: GestureDetector(
-                          onTap: () {
-                            // 정보보기
-                          },
-                          child: Icon(Icons.info, color: Colors.black38),
-                        ))
-                    : Text(""),
-                Positioned(
-                    bottom: 5,
-                    right: 5,
-                    child: Text(
-                      "일치율 : ($match%)",
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.white30),
-                    )),
               ],
             ),
             Text(
@@ -139,6 +128,15 @@ Widget recipeGrid_One(
               style: TextStyle(fontSize: 16),
               overflow: TextOverflow.fade,
               maxLines: 1,
+            ),
+            Text(
+              data["contents"]!,
+              style: TextStyle(fontSize: 16),
+              overflow: TextOverflow.fade,
+              maxLines: 1,
+            ),
+            SizedBox(
+              height: 50,
             )
           ]));
     }),
