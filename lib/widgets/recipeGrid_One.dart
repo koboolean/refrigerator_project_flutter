@@ -12,7 +12,7 @@ Widget recipeGrid_One(
     shrinkWrap: true,
     padding: const EdgeInsets.fromLTRB(10, 30, 10, 10), // padding
     crossAxisCount: 1, // 한 열에 보여줄 갯수
-    childAspectRatio: 1 / 3, // 상하비율
+    childAspectRatio: 2 / 3, // 상하비율
     children: List.generate(datas.length, (index) {
       var data = datas[index];
       var match = data["match"]!;
@@ -102,8 +102,7 @@ Widget recipeGrid_One(
             Row(
               children: [
                 Expanded(
-                  child: Text("Step${data["step"]}",
-                      style: TextStyle(fontSize: 30)),
+                  child: Text(data["step"]!, style: TextStyle(fontSize: 30)),
                 ),
                 Icon(Icons.timer_outlined, size: 30),
               ],
