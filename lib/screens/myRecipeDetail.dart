@@ -15,7 +15,15 @@ import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid_One.dart';
 
-class myRecipeDetail extends StatelessWidget {
+class myRecipeDetail extends StatefulWidget {
+
+  myRecipeDetail({super.key});
+
+  @override
+  State<myRecipeDetail> createState() => _myRecipeDetailState();
+}
+
+class _myRecipeDetailState extends State<myRecipeDetail> {
   final list = [
     {
       "step": "Intro",
@@ -55,14 +63,10 @@ class myRecipeDetail extends StatelessWidget {
     },
   ];
 
-  myRecipeDetail({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '레시피상세',
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: true,
           title: Text('레시피 상세'),
           actions: [
             IconButton(
@@ -98,7 +102,6 @@ class myRecipeDetail extends StatelessWidget {
             context: context,
           ),
         ),
-      ),
-    );
+      );
   }
 }
