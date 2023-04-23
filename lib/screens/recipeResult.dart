@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/model/recipeCategory.dart';
+import 'package:refrigerator_project_flutter/services/providerTestService.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeDialog.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
 
@@ -27,21 +28,9 @@ class _RecipeResultState extends State<RecipeResult> {
     //[{materialName: 양파, materialCategory: 기타, materialCount: 3}, {materialName: 돼지고기rrrrrrr, materialCategory: 육류, materialCount: 300}, {materialName: 양고기, materialCategory: 육류, materialCount: 200}, {materialName: 고등어, materialCategory: 어류, materialCount: 300}, {materialName: 루피, materialCategory: 원피스, materialCount: 300}, {materialName: 나루토, materialCategory: 나루토, materialCount: 300}, {materialName: 이치고, materialCategory: 블리치, materialCount: 300}, {materialName: name2, type: add}, {materialName: name2, type: add}, {materialName: name2, type: add}]
 
     final width = MediaQuery.of(context).size.width;
-    // 임시 데이터 생성
-    List<RecipeCategory> list = [
-      RecipeCategory(
-          title: "김치찌개",
-          match: "60",
-          image:
-              "https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg",
-          item:
-              "배추김치, 국간장, 고춧가루111111111111111111111111111111111111111111111111111",
-          necItem: "참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치참치",
-          totalTime: "60"),
-    ];
 
-    return Consumer(
-      builder: (context, bucketService, child) {
+    return Consumer<ProviderTestService>(
+      builder: (context, providerTestService, child) {
         return Scaffold(
           appBar: AppBar(
             centerTitle: false,
@@ -55,10 +44,10 @@ class _RecipeResultState extends State<RecipeResult> {
             backgroundColor: THEME_COLOR,
           ),
           body: recipeGrid(
-              datas: list,
+              datas: providerTestService.recipeItem,
               type: true,
               callbackFunction: (index) {
-                var data = list[index];
+                var data = providerTestService.recipeItem[index];
                 var type = "view"; // type - edit, view
                 return showDialog(
                     context: context,

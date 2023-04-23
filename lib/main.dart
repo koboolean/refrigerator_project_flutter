@@ -1,12 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/screens/homePage.dart';
 import 'package:refrigerator_project_flutter/screens/loginPage.dart';
+import 'package:refrigerator_project_flutter/services/providerTestService.dart';
 
-import 'services/auth_service.dart';
+import 'services/authService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // main 함수에서 async 사용하기 위함
@@ -15,6 +15,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthService()),
+        ChangeNotifierProvider(create: (context) => ProviderTestService()),
       ],
       child: const MyApp(),
     ),

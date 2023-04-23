@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/screens/loginPage.dart';
 import 'package:yaml/yaml.dart';
 
-import '../services/auth_service.dart';
+import '../services/authService.dart';
 
 /// 홈페이지
 class MyPage extends StatefulWidget {

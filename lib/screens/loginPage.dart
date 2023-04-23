@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/screens/homePage.dart';
 
-import 'package:refrigerator_project_flutter/services/auth_service.dart';
+import 'package:refrigerator_project_flutter/services/authService.dart';
 
 /// 로그인 페이지
 class LoginPage extends StatefulWidget {

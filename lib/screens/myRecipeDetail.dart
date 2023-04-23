@@ -3,7 +3,7 @@
 // import 'package:provider/provider.dart';
 // import 'package:refrigerator_project_flutter/model/recipeItem.dart';
 // import 'package:refrigerator_project_flutter/model/myrecipeItem.dart';
-// import 'package:refrigerator_project_flutter/services/auth_service.dart';
+// import 'package:refrigerator_project_flutter/services/authService.dart';
 
 // import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 // import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
