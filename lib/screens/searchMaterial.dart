@@ -2,6 +2,7 @@ import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/screens/recipeResult.dart';
 
+import '../constants/color.dart';
 import '../widgets/buttonGrid.dart';
 
 /// 홈페이지
@@ -191,7 +192,7 @@ class _SearchMaterialState extends State<SearchMaterial>
               label: Row(
                 children: [Text("레시피 검색"), Icon(Icons.chevron_right_sharp)],
               ),
-              backgroundColor: Colors.pink,
+              backgroundColor: THEME_COLOR,
             ),
             SizedBox(
               height: 100,

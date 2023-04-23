@@ -5,6 +5,8 @@ import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 
+import '../constants/color.dart';
+
 /// 홈페이지
 class MyRecipe extends StatefulWidget {
   const MyRecipe({Key? key}) : super(key: key);
@@ -38,11 +40,9 @@ class _MyRecipeState extends State<MyRecipe> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '나만의 레시피',
-      home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
-            title: Text('나만의 레시피'),
+            title: Text('나의 레시피'),
           ),
           body: Center(
             child: FoodListView(
@@ -69,13 +69,13 @@ class _MyRecipeState extends State<MyRecipe> {
                 label: Row(
                   children: [Text("레시피 추가"), Icon(Icons.chevron_right_sharp)],
                 ),
-                backgroundColor: Colors.pink,
+                backgroundColor: THEME_COLOR,
               ),
               SizedBox(
                 height: 100,
               )
             ],
-          )),
+          )
     );
   }
 }
