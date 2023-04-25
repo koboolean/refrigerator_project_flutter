@@ -179,9 +179,11 @@ class _MyPageState extends State<MyPage> {
                         color: Colors.black,
                       ),
                       onPressed: () async {
-                        bool? result = await ShowConfirmationDialog(
-                          content: '정말 회원을 탈퇴하시겠습니까?',
-                        ).show(context);
+                        bool? result = await showConfirmationDialog(
+                          context,
+                          'Confirmation',
+                          '정말 탈퇴하시겠습니까?',
+                        );
 
                         if (result == true) {
                           // 탈퇴하기
