@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/screens/recipeResult.dart';
 import 'package:refrigerator_project_flutter/screens/searchMaterial.dart';
-import 'package:refrigerator_project_flutter/services/auth_service.dart';
+import 'package:refrigerator_project_flutter/services/authService.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
 
 /// 홈페이지

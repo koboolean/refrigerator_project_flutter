@@ -3,7 +3,7 @@
 // import 'package:provider/provider.dart';
 // import 'package:refrigerator_project_flutter/model/recipeItem.dart';
 // import 'package:refrigerator_project_flutter/model/myrecipeItem.dart';
-// import 'package:refrigerator_project_flutter/services/auth_service.dart';
+// import 'package:refrigerator_project_flutter/services/authService.dart';
 
 // import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
 // import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
@@ -16,7 +16,15 @@ import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid_One.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
 
-class myRecipeDetail extends StatelessWidget {
+class myRecipeDetail extends StatefulWidget {
+
+  myRecipeDetail({super.key});
+
+  @override
+  State<myRecipeDetail> createState() => _myRecipeDetailState();
+}
+
+class _myRecipeDetailState extends State<myRecipeDetail> {
   final list = [
     {
       "step": "Intro",
@@ -56,12 +64,9 @@ class myRecipeDetail extends StatelessWidget {
     },
   ];
 
-  myRecipeDetail({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '레시피상세',
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           title: Text('레시피 상세'),
           backgroundColor: THEME_COLOR,
@@ -74,16 +79,16 @@ class myRecipeDetail extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => myRecipeAdd()),
                   );
                 }),
-            IconButton(
-              icon: const Icon(Icons.navigate_next),
-              tooltip: 'Next page',
-              onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => myRecipe()),
-                // );
-              },
-            ),
+            // IconButton(
+            //   icon: const Icon(Icons.navigate_next),
+            //   tooltip: 'Next page',
+            //   onPressed: () {
+            //     // Navigator.push(
+            //     //   context,
+            //     //   MaterialPageRoute(builder: (context) => myRecipe()),
+            //     // );
+            //   },
+            // ),
           ],
         ),
         body: Center(
@@ -99,7 +104,6 @@ class myRecipeDetail extends StatelessWidget {
             context: context,
           ),
         ),
-      ),
-    );
+      );
   }
 }

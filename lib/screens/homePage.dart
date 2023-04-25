@@ -5,7 +5,7 @@ import 'package:refrigerator_project_flutter/screens/myPage.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipe.dart';
 import 'package:refrigerator_project_flutter/screens/myRefriger.dart';
 import 'package:refrigerator_project_flutter/screens/searchMaterial.dart';
-import 'package:refrigerator_project_flutter/services/auth_service.dart';
+import 'package:refrigerator_project_flutter/services/authService.dart';
 
 /// 홈페이지
 class HomePage extends StatefulWidget {

@@ -38,45 +38,42 @@ class _MyRecipeState extends State<MyRecipe> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '나만의 레시피',
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('나만의 레시피'),
-            backgroundColor: THEME_COLOR,
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('나의 레시피'),
+          backgroundColor: THEME_COLOR,
+        ),
+        body: Center(
+          child: FoodListView(
+            foods: foods,
+            callbackFunction: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => myRecipeDetail()),
+              );
+            },
           ),
-          body: Center(
-            child: FoodListView(
-              foods: foods,
-              callbackFunction: () {
+        ),
+        floatingActionButton: Stack(
+          children: [
+            FloatingActionButton.extended(
+              onPressed: () {
+                // Add your onPressed code here!
+
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => myRecipeDetail()),
+                  MaterialPageRoute(builder: (context) => myRecipeAdd()),
                 );
               },
-            ),
-          ),
-          floatingActionButton: Stack(
-            children: [
-              FloatingActionButton.extended(
-                onPressed: () {
-                  // Add your onPressed code here!
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => myRecipeAdd()),
-                  );
-                },
-                label: Row(
-                  children: [Text("레시피 추가"), Icon(Icons.chevron_right_sharp)],
-                ),
-                backgroundColor: Colors.pink,
+              label: Row(
+                children: [Text("레시피 추가"), Icon(Icons.chevron_right_sharp)],
               ),
-              SizedBox(
-                height: 100,
-              )
-            ],
-          )),
-    );
+              backgroundColor: THEME_COLOR,
+            ),
+            SizedBox(
+              height: 100,
+            )
+          ],
+        ));
   }
 }

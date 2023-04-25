@@ -185,24 +185,23 @@ class _SearchMaterialState extends State<SearchMaterial>
                 onPressed: () {
                   // Add your onPressed code here!
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RecipeResult(),
-                        settings: RouteSettings(arguments: itemList)),
-                  );
-                },
-                label: Row(
-                  children: [Text("레시피 검색"), Icon(Icons.chevron_right_sharp)],
-                ),
-                backgroundColor: Colors.pink,
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => RecipeResult(),
+                      settings: RouteSettings(arguments: itemList)),
+                );
+              },
+              label: Row(
+                children: [Text("레시피 검색"), Icon(Icons.chevron_right_sharp)],
               ),
-              SizedBox(
-                height: 100,
-              )
-            ],
-          )),
-    );
+              backgroundColor: THEME_COLOR,
+            ),
+            SizedBox(
+              height: 100,
+            )
+          ],
+        ));
   }
 
   funcRemoveItem(int index) {

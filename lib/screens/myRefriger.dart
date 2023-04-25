@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/model/myRefrigeritem.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeList.dart';
-import 'package:refrigerator_project_flutter/services/auth_service.dart';
+import 'package:refrigerator_project_flutter/services/authService.dart';
 
 /// 홈페이지
 class MyFridge extends StatefulWidget {
