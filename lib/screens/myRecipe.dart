@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/model/myrecipeItem.dart';
 import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
@@ -42,6 +43,7 @@ class _MyRecipeState extends State<MyRecipe> {
       home: Scaffold(
           appBar: AppBar(
             title: Text('나만의 레시피'),
+            backgroundColor: THEME_COLOR,
           ),
           body: Center(
             child: FoodListView(

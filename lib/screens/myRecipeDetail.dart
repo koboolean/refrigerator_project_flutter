@@ -14,6 +14,7 @@
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid_One.dart';
+import 'package:refrigerator_project_flutter/constants/color.dart';
 
 class myRecipeDetail extends StatelessWidget {
   final list = [
@@ -63,6 +64,7 @@ class myRecipeDetail extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('레시피 상세'),
+          backgroundColor: THEME_COLOR,
           actions: [
             IconButton(
                 icon: Icon(Icons.add_box),

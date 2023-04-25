@@ -160,6 +160,36 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ],
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "탈퇴하기",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    Spacer(),
+                    IconButton(
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        // 탈퇴하기
+                        context.read<AuthService>().delete();
+
+                        // 로그인 페이지로 이동
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               )
             ],
           ),

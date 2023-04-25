@@ -67,9 +67,9 @@ class AuthService extends ChangeNotifier {
       notifyListeners(); // 로그인 상태 변경 알림
     } on FirebaseAuthException catch (e) {
       // firebase auth 에러 발생
-      if(e.code == "invalid-email"){
-       onError("이메일 형식이 올바르지 않습니다.");
-      }else{
+      if (e.code == "invalid-email") {
+        onError("이메일 형식이 올바르지 않습니다.");
+      } else {
         onError(e.message!);
       }
     } catch (e) {
@@ -81,6 +81,12 @@ class AuthService extends ChangeNotifier {
   void signOut() async {
     // 로그아웃
     await FirebaseAuth.instance.signOut();
+    notifyListeners(); // 로그인 상태 변경 알림
+  }
+
+  void delete() async {
+    // 탈퇴하기
+    await currentUser()?.delete();
     notifyListeners(); // 로그인 상태 변경 알림
   }
 }
