@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/screens/loginPage.dart';
 import 'package:yaml/yaml.dart';
+import 'package:refrigerator_project_flutter/constants/showConfirmationDialog.dart';
 
 import '../services/authService.dart';
 
@@ -177,15 +178,22 @@ class _MyPageState extends State<MyPage> {
                         Icons.close,
                         color: Colors.black,
                       ),
-                      onPressed: () {
-                        // 탈퇴하기
-                        context.read<AuthService>().delete();
+                      onPressed: () async {
+                        bool? result = await ShowConfirmationDialog(
+                          content: '정말 회원을 탈퇴하시겠습니까?',
+                        ).show(context);
 
-                        // 로그인 페이지로 이동
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                        );
+                        if (result == true) {
+                          // 탈퇴하기
+                          context.read<AuthService>().delete();
+
+                          // // 로그인 페이지로 이동
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
+                          );
+                        }
                       },
                     ),
                   ],

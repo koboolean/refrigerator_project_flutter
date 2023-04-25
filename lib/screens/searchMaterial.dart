@@ -130,6 +130,8 @@ class _SearchMaterialState extends State<SearchMaterial>
                         ),
                       ),
                       ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: THEME_COLOR),
                         onPressed: () {
                           setState(() {
                             itemList.add(
