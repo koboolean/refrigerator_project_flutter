@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/model/myrecipeItem.dart';
 import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../constants/color.dart';
 
 /// 홈페이지
@@ -71,14 +71,14 @@ class _MyRecipeState extends State<MyRecipe> {
             FloatingActionButton.extended(
               onPressed: () {
                 // Add your onPressed code here!
-                // print(firstfood);
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => myRecipeAdd()),
                 );
               },
               label: Row(
-                children: [Text(firstfood), Icon(Icons.chevron_right_sharp)],
+                children: [Text("레시피 추가"), Icon(Icons.chevron_right_sharp)],
               ),
               backgroundColor: THEME_COLOR,
             ),
