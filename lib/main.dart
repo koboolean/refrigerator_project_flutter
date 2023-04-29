@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ void main() async {
   );
 }
 
-loadVersion() async{
+loadVersion() async {
   double version = await TestPreferencesService().getTestPreferences();
   print("테스트 = " + version.toString());
 }
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     final user = context.read<AuthService>().currentUser();
     final ThemeData theme = ThemeData();
 
@@ -47,18 +48,12 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: THEME_COLOR,
-        appBarTheme: AppBarTheme(
-            color: THEME_COLOR
-        ),
-        buttonTheme: ButtonThemeData(
-          buttonColor: THEME_COLOR
-        ),
-        colorScheme: theme.colorScheme.copyWith(secondary: THEME_COLOR)
-      ),
+          primaryColor: THEME_COLOR,
+          appBarTheme: AppBarTheme(color: THEME_COLOR),
+          buttonTheme: ButtonThemeData(buttonColor: THEME_COLOR),
+          colorScheme: theme.colorScheme.copyWith(secondary: THEME_COLOR)),
       debugShowCheckedModeBanner: false,
       home: user == null ? LoginPage() : HomePage(),
     );
   }
 }
-

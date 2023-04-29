@@ -4,7 +4,7 @@ import 'package:refrigerator_project_flutter/model/myrecipeItem.dart';
 import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../constants/color.dart';
 
 /// 홈페이지
@@ -15,12 +15,23 @@ class MyRecipe extends StatefulWidget {
   State<MyRecipe> createState() => _MyRecipeState();
 }
 
+Future<String> getFirstFood() async {
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  DocumentSnapshot testdata =
+      await firestore.collection('Test').doc('RECIPY_TB').get();
+
+  return testdata.id.toString();
+}
+
 class _MyRecipeState extends State<MyRecipe> {
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  String firstfood = getFirstFood() as String;
+
   // 임시 데이터 생성
   // ignore: prefer_final_fields
   final foods = [
     myrecipeItem(
-      title: '피자',
+      title: '탕수육',
       modifiedDate: DateTime.now(),
       isFavorite: true,
     ),
@@ -41,41 +52,40 @@ class _MyRecipeState extends State<MyRecipe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar: AppBar(
-            title: Text('나의 레시피'),
+        appBar: AppBar(
+          title: Text('나의 레시피'),
+        ),
+        body: Center(
+          child: FoodListView(
+            foods: foods,
+            callbackFunction: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => myRecipeDetail()),
+              );
+            },
           ),
-          body: Center(
-            child: FoodListView(
-              foods: foods,
-              callbackFunction: () {
+        ),
+        floatingActionButton: Stack(
+          children: [
+            FloatingActionButton.extended(
+              onPressed: () {
+                // Add your onPressed code here!
+                // print(firstfood);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => myRecipeDetail()),
+                  MaterialPageRoute(builder: (context) => myRecipeAdd()),
                 );
               },
-            ),
-          ),
-          floatingActionButton: Stack(
-            children: [
-              FloatingActionButton.extended(
-                onPressed: () {
-                  // Add your onPressed code here!
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => myRecipeAdd()),
-                  );
-                },
-                label: Row(
-                  children: [Text("레시피 추가"), Icon(Icons.chevron_right_sharp)],
-                ),
-                backgroundColor: THEME_COLOR,
+              label: Row(
+                children: [Text(firstfood), Icon(Icons.chevron_right_sharp)],
               ),
-              SizedBox(
-                height: 100,
-              )
-            ],
-          )
-    );
+              backgroundColor: THEME_COLOR,
+            ),
+            SizedBox(
+              height: 100,
+            )
+          ],
+        ));
   }
 }
