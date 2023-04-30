@@ -178,12 +178,108 @@ class _MyFridgeState extends State<MyFridge> with TickerProviderStateMixin {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(8, 15, 4, 15),
-                      child: Text(
-                        "add",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
+                      padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                      child: InkWell(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('재료 추가하기'),
+                                content: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      TextField(
+                                        controller: nameController,
+                                        decoration: InputDecoration(
+                                          labelText: '재료명',
+                                        ),
+                                      ),
+                                      DropdownButtonFormField<String>(
+                                        value: categories[0],
+                                        items: categories
+                                            .map((category) => DropdownMenuItem(
+                                                value: category,
+                                                child: Text(category)))
+                                            .toList(),
+                                        decoration: InputDecoration(
+                                          labelText: '분류',
+                                        ),
+                                        onChanged: (value) {},
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: TextFormField(
+                                              decoration: InputDecoration(
+                                                labelText: '유통기한',
+                                              ),
+                                              onTap: () async {
+                                                final DateTime? picked =
+                                                    await showDatePicker(
+                                                  context: context,
+                                                  initialDate: DateTime.now(),
+                                                  firstDate: DateTime(2020),
+                                                  lastDate: DateTime(2025),
+                                                );
+                                                if (picked != null) {
+                                                  // 선택된 날짜를 처리하는 코드
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      TextField(
+                                        controller: quantityController,
+                                        decoration: InputDecoration(
+                                          labelText: '개수와 무게',
+                                        ),
+                                      ),
+                                      TextField(
+                                        controller: descriptionController,
+                                        decoration: InputDecoration(
+                                          labelText: '설명',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      '취소',
+                                      style: TextStyle(color: Colors.grey),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      // 추가하는 코드
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('저장'),
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: THEME_COLOR),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          child: Text(
+                            'add',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                          ),
                         ),
                       ),
                     ),
