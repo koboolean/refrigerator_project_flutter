@@ -6,8 +6,6 @@ import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 
-import '../constants/color.dart';
-
 /// 홈페이지
 class MyRecipe extends StatefulWidget {
   const MyRecipe({Key? key}) : super(key: key);
