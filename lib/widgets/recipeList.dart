@@ -22,9 +22,9 @@ Widget RecipeList(
           return ListTile(
             title: Text(item.headerValue),
             trailing: Wrap(children: [
-              Text(item.headersubValue),
+              Text(item.quantity),
             ]),
-            subtitle: Text(item.expandedValue),
+            subtitle: Text(item.dateTimeValue),
           );
         },
         body: ListTile(
@@ -45,6 +45,10 @@ Widget RecipeList(
                   ],
                   onSelected: (value) {
                     if (value == 'edit') {
+                      nameController.text = item.headerValue;
+                      item.categoryValue = item.categoryValue;
+                      quantityController.text = item.quantity;
+                      // descriptionController.text = item.description;
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
