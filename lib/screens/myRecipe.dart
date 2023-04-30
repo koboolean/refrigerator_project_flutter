@@ -53,6 +53,7 @@ class _MyRecipeState extends State<MyRecipe> {
     return Scaffold(
         appBar: AppBar(
           title: Text('나의 레시피'),
+          backgroundColor: THEME_COLOR,
         ),
         body: Center(
           child: FoodListView(
@@ -71,13 +72,15 @@ class _MyRecipeState extends State<MyRecipe> {
               onPressed: () {
                 // Add your onPressed code here!
 
+                // print(firstfood);
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => myRecipeAdd()),
                 );
               },
               label: Row(
-                children: [Text("레시피 추가"), Icon(Icons.chevron_right_sharp)],
+                children: [Text(firstfood), Icon(Icons.chevron_right_sharp)],
               ),
               backgroundColor: THEME_COLOR,
             ),
