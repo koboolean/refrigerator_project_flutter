@@ -5,5 +5,6 @@ class FirstFoodService extends ChangeNotifier{
   Future<QuerySnapshot> getFirstFood() async {
     final firestore = FirebaseFirestore.instance.collection('Test');
     return await firestore.get();
+
   }
 }

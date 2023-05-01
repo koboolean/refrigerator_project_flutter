@@ -21,6 +21,7 @@ class _MyRecipeState extends State<MyRecipe> {
   final firstfood = FirstFoodService().getFirstFood();
   // 임시 데이터 생성
   // ignore: prefer_final_fields
+
   final foods = [
     myrecipeItem(
       title: '탕수육',
