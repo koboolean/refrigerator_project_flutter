@@ -6,6 +6,8 @@ import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
 import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 
+import '../services/firstFoodService.dart';
+
 /// 홈페이지
 class MyRecipe extends StatefulWidget {
   const MyRecipe({Key? key}) : super(key: key);
@@ -14,18 +16,9 @@ class MyRecipe extends StatefulWidget {
   State<MyRecipe> createState() => _MyRecipeState();
 }
 
-Future<String> getFirstFood() async {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  DocumentSnapshot testdata =
-      await firestore.collection('Test').doc('RECIPY_TB').get();
-
-  return testdata.id.toString();
-}
-
 class _MyRecipeState extends State<MyRecipe> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  String firstfood = getFirstFood() as String;
-
+  final firstfood = FirstFoodService().getFirstFood();
   // 임시 데이터 생성
   // ignore: prefer_final_fields
   final foods = [
@@ -80,7 +73,7 @@ class _MyRecipeState extends State<MyRecipe> {
                 );
               },
               label: Row(
-                children: [Text(firstfood), Icon(Icons.chevron_right_sharp)],
+                children: [Text('레시피 추가')],
               ),
               backgroundColor: THEME_COLOR,
             ),
