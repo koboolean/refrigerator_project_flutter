@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
-import 'package:refrigerator_project_flutter/model/recipeCategory.dart';
 import 'package:refrigerator_project_flutter/services/providerTestService.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeDialog.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
