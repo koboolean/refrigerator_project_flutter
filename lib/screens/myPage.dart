@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/screens/loginPage.dart';
 import 'package:yaml/yaml.dart';
-import 'package:refrigerator_project_flutter/constants/showConfirmationDialog.dart';
 
 import '../services/authService.dart';
+import '../widgets/showConfirmationDialog.dart';
 
 /// 홈페이지
 class MyPage extends StatefulWidget {
