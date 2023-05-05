@@ -22,6 +22,7 @@ Widget FoodListView({required foods, required Function callbackFunction}) {
     itemBuilder: (context, index) {
       final food = foods[index];
       print("namo");
+
       print(food.toMap());
       return Slidable(
         actionPane: SlidableDrawerActionPane(),

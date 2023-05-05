@@ -92,7 +92,6 @@ class _RecipeRegistrationScreenState extends State<myRecipeAdd> {
               ElevatedButton(
                 onPressed: () {
                   // 등록 버튼 클릭 시 실행될 코드 구현
-                  // ignore: unused_local_variable
                   final food = myrecipeItem(
                     foodCd: _chapterTitle,
                     foodNm: _description,
