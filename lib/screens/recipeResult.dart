@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
+import 'package:refrigerator_project_flutter/screens/recipeMain.dart';
 import 'package:refrigerator_project_flutter/services/providerTestService.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeDialog.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
@@ -60,7 +61,11 @@ class _RecipeResultState extends State<RecipeResult> {
                           recipeCategory: data,
                           type: type,
                           callbackFunc: () {
-                            print("data${data.title}");
+                            Navigator.pop(context, false);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => RecipeMain(recipeData : data)),
+                            );
                           });
                     });
               }),

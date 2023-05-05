@@ -1,5 +1,6 @@
 class RecipeCategory {
   RecipeCategory({
+    required this.index,
     required this.title,
     required this.match,
     required this.image,
@@ -8,6 +9,7 @@ class RecipeCategory {
     required this.totalTime
   });
 
+  int index; // 인덱스
   String title; // 타이틀
   String match; // 매칭 퍼센트
   String image; // 이미지
