@@ -24,6 +24,7 @@ class _RecipeResultState extends State<RecipeResult> {
         ModalRoute.of(context)!.settings.arguments as List<dynamic>;
 
     log(arguments.toString());
+    log('test');
     //[{materialName: 양파, materialCategory: 기타, materialCount: 3}, {materialName: 돼지고기rrrrrrr, materialCategory: 육류, materialCount: 300}, {materialName: 양고기, materialCategory: 육류, materialCount: 200}, {materialName: 고등어, materialCategory: 어류, materialCount: 300}, {materialName: 루피, materialCategory: 원피스, materialCount: 300}, {materialName: 나루토, materialCategory: 나루토, materialCount: 300}, {materialName: 이치고, materialCategory: 블리치, materialCount: 300}, {materialName: name2, type: add}, {materialName: name2, type: add}, {materialName: name2, type: add}]
 
     final width = MediaQuery.of(context).size.width;
