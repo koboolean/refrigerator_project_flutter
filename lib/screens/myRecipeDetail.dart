@@ -94,7 +94,7 @@ class _myRecipeDetailState extends State<myRecipeDetail> {
         body: Center(
           child: recipeGrid_One(
             datas: list,
-            type: true,
+            type: false,
             callbackFunction: () {
               Navigator.push(
                 context,
