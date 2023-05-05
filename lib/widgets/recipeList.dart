@@ -46,9 +46,10 @@ Widget RecipeList(
                   onSelected: (value) {
                     if (value == 'edit') {
                       nameController.text = item.headerValue;
-                      item.categoryValue = item.categoryValue;
+                      var categoryValue = item.categoryValue;
+                      var dateTimeValue = item.dateTimeValue;
                       quantityController.text = item.quantity;
-                      // descriptionController.text = item.description;
+                      descriptionController.text = item.description;
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -65,7 +66,7 @@ Widget RecipeList(
                                     ),
                                   ),
                                   DropdownButtonFormField<String>(
-                                    value: categories[0],
+                                    value: categoryValue,
                                     items: categories
                                         .map((category) => DropdownMenuItem(
                                             value: category,
@@ -83,6 +84,7 @@ Widget RecipeList(
                                           decoration: InputDecoration(
                                             labelText: '유통기한',
                                           ),
+                                          initialValue: dateTimeValue,
                                           onTap: () async {
                                             final DateTime? picked =
                                                 await showDatePicker(
