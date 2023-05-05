@@ -17,7 +17,6 @@ import 'package:refrigerator_project_flutter/widgets/recipeGrid_One.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
 
 class myRecipeDetail extends StatefulWidget {
-
   myRecipeDetail({super.key});
 
   @override
@@ -66,44 +65,44 @@ class _myRecipeDetailState extends State<myRecipeDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          title: Text('레시피 상세'),
-          backgroundColor: THEME_COLOR,
-          actions: [
-            IconButton(
-                icon: Icon(Icons.add_box),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => myRecipeAdd()),
-                  );
-                }),
-            // IconButton(
-            //   icon: const Icon(Icons.navigate_next),
-            //   tooltip: 'Next page',
-            //   onPressed: () {
-            //     // Navigator.push(
-            //     //   context,
-            //     //   MaterialPageRoute(builder: (context) => myRecipe()),
-            //     // );
-            //   },
-            // ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('레시피 상세'),
+        backgroundColor: THEME_COLOR,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add_box),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => myRecipeAdd()),
+                );
+              }),
+          // IconButton(
+          //   icon: const Icon(Icons.navigate_next),
+          //   tooltip: 'Next page',
+          //   onPressed: () {
+          //     // Navigator.push(
+          //     //   context,
+          //     //   MaterialPageRoute(builder: (context) => myRecipe()),
+          //     // );
+          //   },
+          // ),
+        ],
+      ),
+      body: Center(
+        child: recipeGrid_One(
+          datas: list,
+          type: true,
+          callbackFunction: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => myRecipeAdd()),
+            );
+          },
+          context: context,
         ),
-        body: Center(
-          child: recipeGrid_One(
-            datas: list,
-            type: true,
-            callbackFunction: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => myRecipeAdd()),
-              );
-            },
-            context: context,
-          ),
-        ),
-      );
+      ),
+    );
   }
 }

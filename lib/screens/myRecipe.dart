@@ -18,25 +18,28 @@ class MyRecipe extends StatefulWidget {
 
 class _MyRecipeState extends State<MyRecipe> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final firstfood = FirstFoodService().getFirstFood();
+
   // 임시 데이터 생성
   // ignore: prefer_final_fields
 
   final foods = [
     myrecipeItem(
-      title: '탕수육',
-      modifiedDate: DateTime.now(),
-      isFavorite: true,
+      foodCd: '00001',
+      foodNm: '탕수육',
+      // modifiedDate: DateTime.now(),
+      // isFavorite: true,
     ),
     myrecipeItem(
-      title: '김치찌게',
-      modifiedDate: DateTime.now().subtract(Duration(days: 1)),
-      isFavorite: false,
+      foodCd: '00002',
+      foodNm: '김치찌게',
+      // modifiedDate: DateTime.now().subtract(Duration(days: 1)),
+      // isFavorite: false,
     ),
     myrecipeItem(
-      title: '햄버거',
-      modifiedDate: DateTime.now().subtract(Duration(days: 2)),
-      isFavorite: true,
+      foodCd: '00003',
+      foodNm: '햄버거',
+      // modifiedDate: DateTime.now().subtract(Duration(days: 2)),
+      // isFavorite: true,
     ),
   ];
 
@@ -49,16 +52,47 @@ class _MyRecipeState extends State<MyRecipe> {
           title: Text('나의 레시피'),
           backgroundColor: THEME_COLOR,
         ),
-        body: Center(
-          child: FoodListView(
-            foods: foods,
-            callbackFunction: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => myRecipeDetail()),
-              );
-            },
-          ),
+        body: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+          future: FirstFoodService().getAllFirstFood(),
+          builder: (BuildContext context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.hasError) {
+              return Text('데이터를 불러오는 중 오류가 발생하였습니다.');
+            }
+
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            List<DocumentSnapshot<Map<String, dynamic>>> documents =
+                snapshot.data!.docs;
+
+            for (var document in documents) {
+              // Do something with the document snapshot
+              print("myRecipe.dart");
+              print(document.data());
+            }
+
+            // DocumentSnapshot 타입을 사용하여 데이터를 사용합니다.
+            return FoodListView(
+              foods: documents
+                  .map((doc) => myrecipeItem(
+                        foodCd: doc['FOODCD'],
+                        foodNm: doc['FOODNM'],
+
+                        modifiedDate:
+                            doc['MODIFIEDDATE'].toDate() ?? DateTime.now(),
+                        // isFavorite: doc['FOODCD'],
+                      ))
+                  .toList(),
+              callbackFunction: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => myRecipeDetail()),
+                );
+              },
+            );
+          },
         ),
         floatingActionButton: Stack(
           children: [
