@@ -19,7 +19,7 @@ Widget recipeGrid_One(
 
       return GestureDetector(
           onTap: () {
-            callbackFunction();
+            if(!type)callbackFunction();
           },
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -30,7 +30,7 @@ Widget recipeGrid_One(
                 ),
                 type ?
                 IconButton( onPressed: () {
-
+                  callbackFunction(data);
                 }, icon: Icon(Icons.timer_outlined, size: 30)) : Text("")
               ],
             ),

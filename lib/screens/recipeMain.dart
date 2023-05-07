@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:refrigerator_project_flutter/services/providerTestService.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeDialog.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid.dart';
 import 'package:refrigerator_project_flutter/widgets/recipeGrid_One.dart';
+import 'package:refrigerator_project_flutter/widgets/statefulAlertWidget.dart';
 
 /// 홈페이지
 class RecipeMain extends StatefulWidget {
@@ -78,8 +80,80 @@ class _RecipeMainState extends State<RecipeMain> {
                     color: Colors.white)),
             backgroundColor: THEME_COLOR,
           ),
-          body: recipeGrid_One(datas: list, type: true, callbackFunction: () {
-            
+          body: recipeGrid_One(datas: list, type: true, callbackFunction: (data) {
+            String time2Str = data["time"];
+
+            // Timer쓸 경우 Stateful하지 못하여 시간초가 안늘어나는 현상 발생
+            //showStatefulWidgetDialog(context);
+            // 변수 초기화
+            final Stopwatch _stopwatch = Stopwatch();
+            late Timer _timer;
+            Duration _elapsedTime = Duration.zero;
+
+            int time = int.parse(time2Str);
+
+            return showDialog(
+              builder: (_) {
+                return AlertDialog(
+                  content:  StatefulBuilder(
+                builder: (__, StateSetter setState) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Row(children: [Text(style: TextStyle(fontSize: 20.0),"예상 조리시간(분) : $time2Str")]),
+                      SizedBox(height: 10),
+                      Text(
+                        '${_elapsedTime.inMinutes}:${(_elapsedTime.inSeconds % 60).toString().padLeft(2, '0')}:${(_elapsedTime.inMilliseconds % 1000 ~/ 10).toString().padLeft(2, '0')}',
+                        style: TextStyle(fontSize: 60.0),
+                      ),
+                      SizedBox(height: 20.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ElevatedButton(
+                            onPressed:() {
+                              _timer = Timer.periodic(Duration(milliseconds: 100), (timer){
+                                setState(() {
+                                  _elapsedTime = _stopwatch.elapsed;
+                                });
+                                _stopwatch.start();
+                              });
+
+                            },
+                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+                            child: Text("Start", style: TextStyle(color: Colors.black),),
+                          ),
+                          SizedBox(width: 10.0),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_timer != null) {
+                                _timer.cancel();
+                              }
+                            },
+                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+                            child: Text("Stop", style: TextStyle(color: Colors.black),),
+                          ),
+                          SizedBox(width: 10.0),
+                          ElevatedButton(
+                            onPressed: (){
+                              setState(() {
+                                _stopwatch.reset();
+                                _elapsedTime = Duration.zero;
+                              });
+                            },
+                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+                            child: Text("Reset", style: TextStyle(color: Colors.black),),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                  }
+                  ),
+                );
+              }, context: context,
+            );
           },
           context: context)
         );
