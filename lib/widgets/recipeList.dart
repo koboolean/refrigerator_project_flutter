@@ -125,7 +125,7 @@ Widget RecipeList(
                               ElevatedButton(
                                 onPressed: () {
                                   print("tttt");
-                                  items.elementAt(2).headerValue = "1";
+                                  item.headerValue = "1";
                                   print(items.elementAt(2).toMap());
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -153,9 +153,7 @@ Widget RecipeList(
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  print(items.first.toMap());
-                                  items.remove(items.first);
-                                  print(items.first.toMap());
+                                  items.remove(item);
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: THEME_COLOR),
