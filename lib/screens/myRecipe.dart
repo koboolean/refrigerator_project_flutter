@@ -2,11 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
 import 'package:refrigerator_project_flutter/model/myrecipeItem.dart';
-import 'package:refrigerator_project_flutter/widgets/favoriteGrid.dart';
-import 'package:refrigerator_project_flutter/screens/myRecipeDetail.dart';
-import 'package:refrigerator_project_flutter/screens/myRecipeAdd.dart';
 
 import '../services/firstFoodService.dart';
+import '../widgets/foodListView.dart';
+import '../widgets/recipeDialog.dart';
 
 /// 홈페이지
 class MyRecipe extends StatefulWidget {
@@ -17,33 +16,10 @@ class MyRecipe extends StatefulWidget {
 }
 
 class _MyRecipeState extends State<MyRecipe> {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
   // 임시 데이터 생성
   // ignore: prefer_final_fields
 
-  final foods = [
-    myrecipeItem(
-      foodCd: '00001',
-      foodNm: '탕수육',
-      // modifiedDate: DateTime.now(),
-      // isFavorite: true,
-    ),
-    myrecipeItem(
-      foodCd: '00002',
-      foodNm: '김치찌게',
-      // modifiedDate: DateTime.now().subtract(Duration(days: 1)),
-      // isFavorite: false,
-    ),
-    myrecipeItem(
-      foodCd: '00003',
-      foodNm: '햄버거',
-      // modifiedDate: DateTime.now().subtract(Duration(days: 2)),
-      // isFavorite: true,
-    ),
-  ];
-
-  // bool isFavorite = false;
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +45,7 @@ class _MyRecipeState extends State<MyRecipe> {
 
             for (var document in documents) {
               // Do something with the document snapshot
-              print("myRecipe.dart");
+              // print("myRecipe.dart");
               print(document.data());
             }
 
@@ -79,17 +55,16 @@ class _MyRecipeState extends State<MyRecipe> {
                   .map((doc) => myrecipeItem(
                         foodCd: doc['FOODCD'],
                         foodNm: doc['FOODNM'],
-
                         modifiedDate:
                             doc['MODIFIEDDATE'].toDate() ?? DateTime.now(),
-                        // isFavorite: doc['FOODCD'],
+                        isFavorite: doc['ISFAVORITE'],
                       ))
                   .toList(),
-              callbackFunction: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => myRecipeDetail()),
-                );
+              callbackFunction: () async {
+                final snapshot2 = (await FirstFoodService().getAllFirstFood());
+                setState(() {
+                  documents = snapshot2.docs;
+                });
               },
             );
           },
@@ -100,12 +75,23 @@ class _MyRecipeState extends State<MyRecipe> {
               onPressed: () {
                 // Add your onPressed code here!
 
-                // print(firstfood);
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => myRecipeAdd()),
-                );
+                showDialog(
+                    context: context,
+                    barrierDismissible:
+                        true, // 바깥 영역 터치시 닫을지 여부 (edit일 경우 false)
+                    builder: (BuildContext context) {
+                      return recipeDialog(
+                        context: context,
+                        widthResult: MediaQuery.of(context).size.width,
+                        recipeCategory: null,
+                        type: "edit",
+                        callbackFunc: () => {
+                          setState(
+                            () {},
+                          )
+                        },
+                      );
+                    });
               },
               label: Row(
                 children: [Text('레시피 추가')],

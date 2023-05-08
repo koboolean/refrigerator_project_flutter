@@ -1,11 +1,11 @@
 class myrecipeItem {
-  final String foodCd;
-  final String foodNm;
+  late String? foodCd;
+  late String foodNm;
   DateTime? modifiedDate;
   bool isFavorite;
 
   myrecipeItem({
-    required this.foodCd,
+    this.foodCd,
     required this.foodNm,
     this.modifiedDate,
     this.isFavorite = false,
@@ -16,6 +16,7 @@ class myrecipeItem {
       'FOODCD': foodCd,
       'FOODNM': foodNm,
       'MODIFIEDDATE': modifiedDate,
+      'ISFAVORITE': isFavorite
     };
   }
 }

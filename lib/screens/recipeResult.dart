@@ -56,6 +56,7 @@ class _RecipeResultState extends State<RecipeResult> {
                         true, // 바깥 영역 터치시 닫을지 여부 (edit일 경우 false)
                     builder: (BuildContext context) {
                       return recipeDialog(
+                          context: context,
                           widthResult: width,
                           recipeCategory: data,
                           type: type,
