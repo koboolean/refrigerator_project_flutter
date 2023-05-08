@@ -14,4 +14,13 @@ class RefrigerItem {
   String categoryValue;
   String description; // Nullable 타입으로 변경 (설명 생략해도 되게끔)
   bool isExpanded;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'headerValue': headerValue,
+      'quantity': quantity,
+      'dateTimeValue': dateTimeValue,
+      'categoryValue': categoryValue,
+    };
+  }
 }

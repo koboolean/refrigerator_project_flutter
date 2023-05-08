@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
-import 'package:refrigerator_project_flutter/model/recipeItem.dart';
 import 'package:refrigerator_project_flutter/model/myRefrigeritem.dart';
 
 final categories = ['과일', '채소', '육류', '수산물', '음료'];
@@ -35,12 +33,12 @@ Widget RecipeList(
                   icon: Icon(Icons.more_horiz),
                   itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                     const PopupMenuItem(
-                      child: Text('삭제'),
                       value: "delete",
+                      child: Text('삭제'),
                     ),
                     const PopupMenuItem(
-                      child: Text('편집'),
                       value: 'edit',
+                      child: Text('편집'),
                     ),
                   ],
                   onSelected: (value) {
@@ -125,10 +123,14 @@ Widget RecipeList(
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () {},
-                                child: Text('저장'),
+                                onPressed: () {
+                                  print("tttt");
+                                  items.elementAt(2).headerValue = "1";
+                                  print(items.elementAt(2).toMap());
+                                },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: THEME_COLOR),
+                                child: Text('저장'),
                               ),
                             ],
                           );
@@ -150,10 +152,14 @@ Widget RecipeList(
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () {},
-                                child: Text('삭제'),
+                                onPressed: () {
+                                  print(items.first.toMap());
+                                  items.remove(items.first);
+                                  print(items.first.toMap());
+                                },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: THEME_COLOR),
+                                child: Text('삭제'),
                               ),
                             ],
                           );

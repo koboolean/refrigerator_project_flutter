@@ -5,8 +5,8 @@ class FirstFoodService extends ChangeNotifier {
   final obj = FirebaseFirestore.instance.collection('Test');
 
   Future<QuerySnapshot<Map<String, dynamic>>> getAllFirstFood() async {
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await FirebaseFirestore.instance.collection('Test').get();
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await obj.get();
+
     return querySnapshot;
   }
 
