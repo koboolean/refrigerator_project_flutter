@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/services/firstFoodService.dart';
 
-import '../model/myrecipeItem.dart';
-import 'myRecipe.dart';
-
 class myRecipeAdd extends StatefulWidget {
   const myRecipeAdd({super.key});
 
@@ -92,20 +89,21 @@ class _RecipeRegistrationScreenState extends State<myRecipeAdd> {
               ElevatedButton(
                 onPressed: () {
                   // 등록 버튼 클릭 시 실행될 코드 구현
-                  // ignore: unused_local_variable
-                  final food = myrecipeItem(
-                    foodCd: _chapterTitle,
-                    foodNm: _description,
-                    modifiedDate: DateTime.now(),
-                  );
+                  //myRecipeItem객체만들기
+                  // final food = myrecipeItem(
+                  //   foodNm: _description,
+                  //   modifiedDate: DateTime.now(),
+                  // );
 
-                  firstfood.obj.add(food.toMap());
+                  // db insert
+                  // FirstFoodService().addMyRecipeItem(food);
 
+                  //등록후 화면 이동 방법
                   // Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyRecipe()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => MyRecipe()),
+                  // );
                 },
                 child: Text('등록'),
               ),

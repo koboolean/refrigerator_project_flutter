@@ -73,3 +73,4 @@ refrigerator_project_flutter.iml
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 macos/Flutter/GeneratedPluginRegistrant.swift
 pubspec.lock
+pubspec.lock

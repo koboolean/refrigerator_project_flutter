@@ -49,14 +49,14 @@ class _RecipeResultState extends State<RecipeResult> {
               type: true,
               callbackFunction: (index) {
                 var data = providerTestService.recipeItem[index];
-                var type = "view"; // type - edit, view
+                var type = "edit"; // type - edit, view
                 return showDialog(
                     context: context,
-                    barrierDismissible: type == "edit"
-                        ? false
-                        : true, // 바깥 영역 터치시 닫을지 여부 (edit일 경우 false)
+                    barrierDismissible:
+                        true, // 바깥 영역 터치시 닫을지 여부 (edit일 경우 false)
                     builder: (BuildContext context) {
                       return recipeDialog(
+                          context: context,
                           widthResult: width,
                           recipeCategory: data,
                           type: type,
@@ -64,7 +64,9 @@ class _RecipeResultState extends State<RecipeResult> {
                             Navigator.pop(context, false);
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => RecipeMain(recipeData : data)),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      RecipeMain(recipeData: data)),
                             );
                           });
                     });

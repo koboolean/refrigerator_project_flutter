@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../screens/myRecipeDetail.dart';
 import '../services/firstFoodService.dart';
 
 String getLastModifiedDate(DateTime date) {
@@ -21,7 +22,7 @@ Widget FoodListView({required foods, required Function callbackFunction}) {
     itemCount: foods.length,
     itemBuilder: (context, index) {
       final food = foods[index];
-      print("namo");
+      // print("favoriteGrid.dart");
       print(food.toMap());
       return Slidable(
         actionPane: SlidableDrawerActionPane(),
@@ -31,32 +32,48 @@ Widget FoodListView({required foods, required Function callbackFunction}) {
             caption: '수정',
             color: Colors.blue,
             icon: Icons.edit,
-            onTap: () {
+            onTap: () async {
               // TODO: 수정 버튼을 눌렀을 때의 동작 구현
               print('수정 버튼 눌림');
+              //update구문
+              await callbackFunction();
             },
           ),
           IconSlideAction(
             caption: '삭제',
             color: Colors.red,
             icon: Icons.delete,
-            onTap: () {
+            onTap: () async {
               // TODO: 삭제 버튼을 눌렀을 때의 동작 구현
-              print(food.foodCd);
-              FirstFoodService().deleteItem(food.foodCd);
+              await FirstFoodService().deleteItem(food.foodCd);
+              // 새로고침을위한 부모setState호출
+              await callbackFunction();
             },
           ),
         ],
         child: ListTile(
           title: Text(food.foodNm),
           subtitle: Text('수정시간: ${getLastModifiedDate(food.modifiedDate)}'),
-          trailing: Icon(
-            food.isFavorite ? Icons.favorite : Icons.favorite_border,
-            color: Colors.red,
+          trailing: GestureDetector(
+            onTap: () async {
+              // TODO: 즐겨찾기 아이콘 클릭 시 동작하는 코드 구현
+              food.isFavorite = !food.isFavorite;
+              print(food.toMap());
+              await FirstFoodService().updateIsFavorite(food);
+              // 새로고침을위한 부모setState호출
+              await callbackFunction();
+            },
+            child: Icon(
+              food.isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Colors.red,
+            ),
           ),
           onTap: () {
             // TODO: 음식 레시피 상세 페이지로 이동하는 코드 구현
-            callbackFunction();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => myRecipeDetail()),
+            );
           },
         ),
       );

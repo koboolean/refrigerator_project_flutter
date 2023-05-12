@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:refrigerator_project_flutter/constants/color.dart';
-import 'package:refrigerator_project_flutter/model/recipeItem.dart';
 import 'package:refrigerator_project_flutter/model/myRefrigeritem.dart';
 
 final categories = ['과일', '채소', '육류', '수산물', '음료'];
 final nameController = TextEditingController();
+final dateTimeContoller = TextEditingController();
 final quantityController = TextEditingController();
 final descriptionController = TextEditingController();
 Widget RecipeList(
@@ -14,7 +13,8 @@ Widget RecipeList(
     required BuildContext context}) {
   return ExpansionPanelList(
     expansionCallback: (int index, bool isExpanded) {
-      callbackFunction(index, isExpanded);
+      items[index].isExpanded = !isExpanded;
+      callbackFunction();
     },
     children: items.map<ExpansionPanel>((RefrigerItem item) {
       return ExpansionPanel(
@@ -35,19 +35,20 @@ Widget RecipeList(
                   icon: Icon(Icons.more_horiz),
                   itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                     const PopupMenuItem(
-                      child: Text('삭제'),
                       value: "delete",
+                      child: Text('삭제'),
                     ),
                     const PopupMenuItem(
-                      child: Text('편집'),
                       value: 'edit',
+                      child: Text('편집'),
                     ),
                   ],
                   onSelected: (value) {
                     if (value == 'edit') {
                       nameController.text = item.headerValue;
-                      var categoryValue = item.categoryValue;
+                      String? categoryValue = item.categoryValue;
                       var dateTimeValue = item.dateTimeValue;
+                      dateTimeContoller.text = item.dateTimeValue;
                       quantityController.text = item.quantity;
                       descriptionController.text = item.description;
                       showDialog(
@@ -75,7 +76,9 @@ Widget RecipeList(
                                     decoration: InputDecoration(
                                       labelText: '분류',
                                     ),
-                                    onChanged: (value) {},
+                                    onChanged: (value) {
+                                      categoryValue = value;
+                                    },
                                   ),
                                   Row(
                                     children: [
@@ -84,7 +87,7 @@ Widget RecipeList(
                                           decoration: InputDecoration(
                                             labelText: '유통기한',
                                           ),
-                                          initialValue: dateTimeValue,
+                                          controller: dateTimeContoller,
                                           onTap: () async {
                                             final DateTime? picked =
                                                 await showDatePicker(
@@ -93,8 +96,16 @@ Widget RecipeList(
                                               firstDate: DateTime(2020),
                                               lastDate: DateTime(2025),
                                             );
+                                            print(picked);
                                             if (picked != null) {
-                                              // 선택된 날짜를 처리하는 코드
+                                              dateTimeContoller.text =
+                                                  picked.year.toString() +
+                                                      " " +
+                                                      picked.month.toString() +
+                                                      " " +
+                                                      picked.day.toString();
+                                              ;
+                                              print(dateTimeContoller.text);
                                             }
                                           },
                                         ),
@@ -118,17 +129,28 @@ Widget RecipeList(
                             ),
                             actions: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pop(context); // AlertDialog 닫기
+                                },
                                 child: Text(
                                   '취소',
                                   style: TextStyle(color: Colors.grey),
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () {},
-                                child: Text('저장'),
+                                onPressed: () {
+                                  item.headerValue = nameController.text;
+                                  //warning : null값일때 대비해야함
+                                  item.categoryValue = categoryValue!;
+                                  item.dateTimeValue = dateTimeContoller.text;
+                                  item.quantity = quantityController.text;
+                                  item.description = descriptionController.text;
+                                  callbackFunction();
+                                  Navigator.pop(context); // AlertDialog 닫기
+                                },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: THEME_COLOR),
+                                child: Text('저장'),
                               ),
                             ],
                           );
@@ -143,17 +165,23 @@ Widget RecipeList(
                             title: Text('삭제하시겠습니까?'),
                             actions: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pop(context); // AlertDialog 닫기
+                                },
                                 child: Text(
                                   '취소',
                                   style: TextStyle(color: Colors.grey),
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () {},
-                                child: Text('삭제'),
+                                onPressed: () {
+                                  items.remove(item);
+                                  callbackFunction();
+                                  Navigator.pop(context); // AlertDialog 닫기
+                                },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: THEME_COLOR),
+                                child: Text('삭제'),
                               ),
                             ],
                           );
