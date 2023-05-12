@@ -63,4 +63,8 @@ class FirstFoodService extends ChangeNotifier {
       }
     }).catchError((error) => print("Failed to update isFavorite: $error"));
   }
+
+
+  //myRecipeItem Model을 받아서 FOODNM update
+  
 }

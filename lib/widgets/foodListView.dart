@@ -32,9 +32,11 @@ Widget FoodListView({required foods, required Function callbackFunction}) {
             caption: '수정',
             color: Colors.blue,
             icon: Icons.edit,
-            onTap: () {
+            onTap: () async {
               // TODO: 수정 버튼을 눌렀을 때의 동작 구현
               print('수정 버튼 눌림');
+              //update구문
+              await callbackFunction();
             },
           ),
           IconSlideAction(
