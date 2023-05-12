@@ -353,10 +353,10 @@ class _MyFridgeState extends State<MyFridge> with TickerProviderStateMixin {
                           SingleChildScrollView(
                             child: RecipeList(
                               items: _items,
-                              callbackFunction: (index, isExpanded) {
+                              callbackFunction: () {
                                 setState(
                                   () {
-                                    _items[index].isExpanded = !isExpanded;
+                                    // _items[index].isExpanded = !isExpanded;
                                   },
                                 );
                               },
