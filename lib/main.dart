@@ -12,6 +12,7 @@ import 'services/authService.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // main 함수에서 async 사용하기 위함
   await Firebase.initializeApp(); // firebase 앱 시작
+  await Future.delayed(const Duration(seconds: 3)); // 3초 지연
   runApp(
     MultiProvider(
       providers: [
