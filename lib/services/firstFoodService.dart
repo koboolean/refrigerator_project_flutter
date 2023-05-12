@@ -46,6 +46,7 @@ class FirstFoodService extends ChangeNotifier {
     await obj.add(food.toMap());
   }
 
+  //myRecipeItem Model을 받아서 ISFAVORITE update
   Future<void> updateIsFavorite(myrecipeItem food) async {
     print("======firstFoodService updateIsFavorite=======");
     print(food.toMap());
