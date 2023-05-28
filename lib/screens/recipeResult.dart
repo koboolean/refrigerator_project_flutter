@@ -49,7 +49,7 @@ class _RecipeResultState extends State<RecipeResult> {
               type: true,
               callbackFunction: (index) {
                 var data = providerTestService.recipeItem[index];
-                var type = "edit"; // type - edit, view
+                var type = "view"; // type - edit, view
                 return showDialog(
                     context: context,
                     barrierDismissible:
@@ -61,12 +61,11 @@ class _RecipeResultState extends State<RecipeResult> {
                           recipeCategory: data,
                           type: type,
                           callbackFunc: () {
-                            Navigator.pop(context, false);
+                            Navigator.pop(context,false);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      RecipeMain(recipeData: data)),
+                                  builder: (context) => RecipeMain(recipeData: data)),
                             );
                           });
                     });

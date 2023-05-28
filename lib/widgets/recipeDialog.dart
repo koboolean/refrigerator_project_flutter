@@ -22,7 +22,7 @@ Widget recipeDialog(
       necItem: "",
       totalTime: "");
 
-  var foodItem = myrecipeItem(foodNm: "");
+  var foodItem = myrecipeItem(foodNm: "", foodCd: '', totalTime: '');
 
   print("recipeDialog.dart");
   print(type);
@@ -144,10 +144,8 @@ Widget recipeDialog(
       TextButton(
         child: type == "edit" ? const Text('레시피 등록하기') : const Text('요리 시작하기'),
         onPressed: () async {
-          await FirstFoodService().insertMyRecipeItem(foodItem);
-
+          //await FirstFoodService().insertMyRecipeItem(foodItem);
           callbackFunc();
-          Navigator.of(context).pop();
         },
       ),
     ],

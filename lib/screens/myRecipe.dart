@@ -57,7 +57,7 @@ class _MyRecipeState extends State<MyRecipe> {
                         foodNm: doc['FOODNM'],
                         modifiedDate:
                             doc['MODIFIEDDATE'].toDate() ?? DateTime.now(),
-                        isFavorite: doc['ISFAVORITE'],
+                        isFavorite: doc['ISFAVORITE'], totalTime: '',
                       ))
                   .toList(),
               callbackFunction: () async {
@@ -73,24 +73,23 @@ class _MyRecipeState extends State<MyRecipe> {
           children: [
             FloatingActionButton.extended(
               onPressed: () {
-                // Add your onPressed code here!
-
                 showDialog(
                     context: context,
                     barrierDismissible:
                         true, // 바깥 영역 터치시 닫을지 여부 (edit일 경우 false)
                     builder: (BuildContext context) {
-                      return recipeDialog(
-                        context: context,
-                        widthResult: MediaQuery.of(context).size.width,
-                        recipeCategory: null,
-                        type: "edit",
-                        callbackFunc: () => {
-                          setState(
-                            () {},
-                          )
-                        },
-                      );
+                      return StatefulBuilder(
+                          builder: (BuildContext context, StateSetter setState){
+                            return recipeDialog(
+                                context: context,
+                                widthResult: MediaQuery.of(context).size.width,
+                                recipeCategory: null,
+                                type: "edit",
+                                callbackFunc: (foodItem){
+                                    setItem(foodItem);
+                                },
+                            );
+                          });
                     });
               },
               label: Row(
@@ -103,5 +102,9 @@ class _MyRecipeState extends State<MyRecipe> {
             )
           ],
         ));
+  }
+
+  setItem(foodItem) async {
+    await FirstFoodService().insertMyRecipeItem(foodItem);
   }
 }
